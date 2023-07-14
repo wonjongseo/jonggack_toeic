@@ -111,17 +111,10 @@ class SettingScreen extends StatelessWidget {
                   }),
                 ],
                 ...[
+                  const SizedBox(height: 10),
                   SettingButton(
                     onPressed: () => settingController.initJlptWord(),
-                    text: 'Jlpt 초기화 (단어 섞기)',
-                  ),
-                  SettingButton(
-                    onPressed: () => settingController.initGrammar(),
-                    text: '문법 초기화 (문법 섞기)',
-                  ),
-                  SettingButton(
-                    onPressed: () => settingController.initkangi(),
-                    text: '한자 초기화 (한자 섞기)',
+                    text: '단어 초기화 (단어 섞기)',
                   ),
                   SettingButton(
                     text: '나만의 단어 초기화',

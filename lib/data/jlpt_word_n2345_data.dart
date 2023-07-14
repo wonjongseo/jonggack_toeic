@@ -1,6 +1,18 @@
 List<List<Map<String, String>>> jsonN1Words = //
     [
+  [],
+  //1
   [
+    {"word": "noticeably", "mean": "눈에 잘 띄게, 두드러지게"},
+    {"word": "subsequently", "mean": "그 후 "},
+    {"word": "sincerely", "mean": "진심으로, 성심 성의껏"},
+    {"word": "sternly", "mean": "엄격히"},
+    {"word": "brief", "mean": "~에게 간단히 설명하다, 브리핑하다"},
+    {"word": "coherent", "mean": "조리 있는, 일관성 있는"},
+    {"word": "comment", "mean": "논평하다"},
+    {"word": "confine", "mean": "제한하다, ~에 한정시키다"},
+    {"word": "consensus", "mean": "여론, 일치된 의견"},
+    {"word": "constraint", "mean": "제한"},
     {"word": "applicant", "mean": "지원자,신청자"},
     {"word": "apprehensive", "mean": "걱정하는,염려하는"},
     {"word": "aptitude", "mean": "재능,소질"},
@@ -44,15 +56,17 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "expand", "mean": "넓히다"},
     {"word": "disturbance", "mean": "중단, 혼란"},
     {"word": "old-fashioned", "mean": "시대에 뒤떨어진, 구식의"},
-    {"word": "dependable", "mean": "믿을 만한, 신뢰할 수 있는"}
-  ],
-  [
+    {"word": "dependable", "mean": "믿을 만한, 신뢰할 수 있는"},
     {"word": "wage", "mean": "임금, 금료"},
     {"word": "abolish", "mean": "폐지하다"},
     {"word": "access", "mean": "이용 권환,접근;통로"},
     {"word": "accordance", "mean": "일치,조화"},
     {"word": "according to ", "mean": "~에 따라"},
     {"word": "accuse", "mean": "비난하다, 고소하다"},
+  ],
+
+  //2
+  [
     {"word": "adhere", "mean": "고수하다,지키다"},
     {"word": "approval", "mean": "승인,인가"},
     {"word": "at all time", "mean": "항상, 언제나"},
@@ -99,11 +113,13 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "impede", "mean": "억제하다"},
     {"word": "impediment", "mean": "방해물, 억지물"},
     {"word": "delinquent", "mean": "미납의, 지불기한이 넘은"},
-    {"word": "earlier", "mean": "이전에"}
-  ],
-  [
+    {"word": "earlier", "mean": "이전에"},
+    {"word": "translation", "mean": "번역"},
     {"word": "violate", "mean": "위반하다"},
     {"word": "accustomed", "mean": "~에 익숙한"},
+  ],
+  //3
+  [
     {"word": "acquaint", "mean": "~에게~을 숙지시키다, 잘 알게 하다"},
     {"word": "affiliate", "mean": "계열사, 지부"},
     {"word": "attendance", "mean": "출석"},
@@ -152,13 +168,11 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "diminish", "mean": "줄이다, 감소시키다"},
     {"word": "income, earnings", "mean": "수입"},
     {"word": "considerable", "mean": "상당한"},
-    {"word": "condense", "mean": "요약하다"}
-  ],
-  [
-    {"word": "translation", "mean": "번역"},
+    {"word": "condense", "mean": "요약하다"},
     {"word": "accomplish", "mean": "성취하다"},
-    {"word": "adjust", "mean": "적응하다"},
-    {"word": "agree", "mean": "동의하다"},
+  ],
+  //4
+  [
     {"word": "aspiration", "mean": "포부, 열망"},
     {"word": "assign", "mean": "배정하다, 할당하다"},
     {"word": "assist", "mean": "돕다, 조력하다"},
@@ -210,6 +224,7 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "mutual", "mean": "상호의 , 서로의"},
     {"word": "revenge", "mean": "보복"}
   ],
+  //5
   [
     {"word": "widely", "mean": "널리"},
     {"word": "accessible", "mean": "출입할 수 있는; 이용할 수 있는"},
@@ -262,12 +277,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "estimate", "mean": "견적액"},
     {"word": "reject", "mean": "거절하다"}
   ],
+  //6
   [
-    {"word": "violation", "mean": "위반, 위배"},
-    {"word": "abate", "mean": "누그러지다, 약해지다, 감소하다"},
-    {"word": "adversity", "mean": "역경, 불운"},
-    {"word": "ailing", "mean": "병든, 괴로워하는"},
-    {"word": "assert", "mean": "단언하다, 주장하다"},
     {"word": "boost", "mean": "부양하다, 상승시키다"},
     {"word": "brisk", "mean": "호황의, 활발한"},
     {"word": "collapse", "mean": "붕괴"},
@@ -319,9 +330,7 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "fairly", "mean": "공명정대하게, 치우치지 않게"},
     {"word": "essential", "mean": "반드시 해야 하는, 필수적인"},
     {"word": "progress", "mean": "(일이) 행해지다, 진척되다"},
-    {"word": "clause", "mean": "(조약의) 조항"}
-  ],
-  [
+    {"word": "clause", "mean": "(조약의) 조항"},
     {"word": "advocate", "mean": "옹호자"},
     {"word": "alumni", "mean": "동창생들"},
     {"word": "anonymous", "mean": "익명의"},
@@ -330,6 +339,9 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "care of", "mean": "~을 돌보다"},
     {"word": "celebrity", "mean": "유명 인사, 명사"},
     {"word": "censorship", "mean": "검열"},
+  ],
+  //7
+  [
     {"word": "collection", "mean": "수집물, 소장품; 수금, 징수"},
     {"word": "come in +서수", "mean": "~위로 입상하다"},
     {"word": "contestant", "mean": "경기자, 경쟁자"},
@@ -399,6 +411,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "assure", "mean": "보장하다"},
     {"word": "content", "mean": "만족"}
   ],
+  // 8
+
   [
     {"word": "subscription", "mean": "(정기 발행물의) 구독"},
     {"word": "transferable", "mean": "양도할 수 있는"},
@@ -481,6 +495,7 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "neglectfully", "mean": "부주의하게"},
     {"word": "upcoming", "mean": "다가오는"}
   ],
+  // 9
   [
     {"word": "segment", "mean": "부분, 조각"},
     {"word": "survey", "mean": "설문 조사"},
@@ -563,7 +578,16 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "ascertain", "mean": "확인하다"},
     {"word": "exceptional", "mean": "우수한;미결제된"}
   ],
+  // 10
   [
+    {"word": "constructive", "mean": "건설적인"},
+    {"word": "discrepancy", "mean": "불일치"},
+    {"word": "debt", "mean": "책임; 부채, 채무"},
+    {"word": "responsible", "mean": "책임져야 할; ~하기 쉬운"},
+    {"word": "financial", "mean": "금전의, 재정적인"},
+    {"word": "cost", "mean": "지출, 경비"},
+    {"word": "lately", "mean": "최근에"},
+    {"word": "significantly", "mean": "크게, 상당히"},
     {"word": "affordable", "mean": "(가격이) 알맞은, 감당할 수 있는"},
     {"word": "alter", "mean": "(성질,형상을) 고치다, 바꾸다"},
     {"word": "apparel", "mean": "의복, 의류"},
@@ -607,7 +631,11 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "commodity", "mean": "상품"},
     {"word": "expose", "mean": "공개하다, 드러내다"}
   ],
+
+  // 11
   [
+    {"word": "assert", "mean": "단언하다, 주장하다"},
+    {"word": "allow", "mean": "허락하다, 허가증"},
     {"word": "assemble", "mean": "조립하다"},
     {"word": "attribute", "mean": "(원인을) ~에 돌리다, ~의 덕분으로 돌리다"},
     {"word": "automate", "mean": "자동화하다"},
@@ -657,7 +685,14 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "trade", "mean": "맞바꾸다, 교환하다"},
     {"word": "coalition", "mean": "동맹, 제휴"}
   ],
+  //12
+
   [
+    {"word": "adjust", "mean": "적응하다"},
+    {"word": "agree", "mean": "동의하다"},
+    {"word": "violation", "mean": "위반, 위배"},
+    {"word": "abate", "mean": "누그러지다, 약해지다, 감소하다"},
+    {"word": "adversity", "mean": "역경, 불운"},
     {"word": "appearance", "mean": "외관, 외양"},
     {"word": "bewildering", "mean": "당혹케 하는"},
     {"word": "broaden", "mean": "넓히다"},
@@ -701,7 +736,9 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "valid", "mean": "효과적인; (법률 등이) 유효한"},
     {"word": "compulsory", "mean": "반드시 해야 하는, 필수적인"}
   ],
+  // 13
   [
+    {"word": "ailing", "mean": "병든, 괴로워하는"},
     {"word": "appropriately", "mean": "적절하게"},
     {"word": "argumentative", "mean": "논쟁적인, 논쟁을 좋아하는"},
     {"word": "blemish", "mean": "흠, 결점"},
@@ -746,6 +783,7 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "furnish", "mean": "공급하다, 공급; 비품, 소모품"},
     {"word": "appropriately", "mean": "적절히"}
   ],
+  //14
   [
     {"word": "attraction", "mean": "관광 명소"},
     {"word": "away", "mean": "떨어져서"},
@@ -795,6 +833,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "cargo", "mean": "선적, 발송; 탁송화물"},
     {"word": "diverse", "mean": "여러 가지 종류의, 다채로운"}
   ],
+
+  //15
   [
     {"word": "annotated", "mean": "(책 등이) 주석이 달린"},
     {"word": "annulment", "mean": "무효화, 취소"},
@@ -842,6 +882,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "refined", "mean": "정교한, 복잡한; 세련된"},
     {"word": "reduction", "mean": "감소, 하락"}
   ],
+
+  //16
   [
     {"word": "assure", "mean": "~에게 보장하다, ~을 안심시키다"},
     {"word": "at the latest", "mean": "늦어도"},
@@ -889,6 +931,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "decrease", "mean": "줄이다, 감소시키다"},
     {"word": "modify", "mean": "수정하다"}
   ],
+
+  //17
   [
     {"word": "address", "mean": "주소, 다루다, 처리하다"},
     {"word": "adequately", "mean": "적절히"},
@@ -937,6 +981,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "likely", "mean": "책임져야 할; ~하기 쉬운"},
     {"word": "considerably", "mean": "크게, 상당히"}
   ],
+
+  //18
   [
     {"word": "assorted", "mean": "여러 가지 종류의, 다채로운"},
     {"word": "atmosphere", "mean": "분위기, 환경"},
@@ -986,9 +1032,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "clear off", "mean": "(회사를)정리하다, 해산하다"},
     {"word": "maintain", "mean": "보존하다, 유지하다"}
   ],
+  // 19
   [
-    {"word": "disappointing", "mean": "실망스러운, 실망시키는"},
-    {"word": "encouraging", "mean": "용기를 복돋워주는"},
     {"word": "exceed", "mean": "~을 초과하다"},
     {"word": "factor", "mean": "요소, 원인"},
     {"word": "figure", "mean": "합계 수 , 총액"},
@@ -1030,8 +1075,9 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "vocation", "mean": "직업"},
     {"word": "trash", "mean": "쓰레기, 낭비하다"}
   ],
+
+// 20
   [
-    {"word": "audit", "mean": "회계 감사, 심사"},
     {"word": "barely", "mean": "가까스로, 거의~하지않는"},
     {"word": "budget", "mean": "예산"},
     {"word": "calculate", "mean": "계산하다"},
@@ -1083,6 +1129,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "ultimately", "mean": "결국, 마침내"},
     {"word": "popular", "mean": "널리 퍼진, 유행하고 있는"}
   ],
+
+  //21
   [
     {"word": "announce", "mean": "발표하다"},
     {"word": "asset", "mean": "자산"},
@@ -1144,6 +1192,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "expenditure", "mean": "비용, 지출"},
     {"word": "forfeit", "mean": "벌금"}
   ],
+
+  //22
   [
     {"word": "contaminate", "mean": "오염시키다"},
     {"word": "continually", "mean": "계속해서"},
@@ -1201,6 +1251,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "restrict", "mean": "제한하다, ~에 한정시키다"},
     {"word": "delay", "mean": "연기하다, 미루다"}
   ],
+
+  //23
   [
     {"word": "bill", "mean": "~에게 청구서를 보내다, 청구서, 계산서"},
     {"word": "bounce", "mean": "부도가 나 되돌아오다"},
@@ -1252,7 +1304,12 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "sign up", "mean": "등록하다"},
     {"word": "attendant", "mean": "참가자"}
   ],
+
+  //24
   [
+    {"word": "disappointing", "mean": "실망스러운, 실망시키는"},
+    {"word": "encouraging", "mean": "용기를 복돋워주는"},
+    {"word": "audit", "mean": "회계 감사, 심사"},
     {"word": "confusion", "mean": "혼란"},
     {"word": "consider", "mean": "고려하다"},
     {"word": "controversy", "mean": "논란"},
@@ -1306,12 +1363,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "block", "mean": "차단하다, 막다"},
     {"word": "formal", "mean": "공무원, 관리"},
     {"word": "objection", "mean": "반대, 대항"},
-    {"word": "allow", "mean": "허락하다, 허가증"},
-    {"word": "noticeably", "mean": "눈에 잘 띄게, 두드러지게"},
-    {"word": "subsequently", "mean": "그 후 "},
-    {"word": "sincerely", "mean": "진심으로, 성심 성의껏"},
-    {"word": "sternly", "mean": "엄격히"}
   ],
+  //24
   [
     {"word": "bear", "mean": "~을 몸에 지니다"},
     {"word": "cite", "mean": "언급하다"},
@@ -1361,17 +1414,11 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "prospect", "mean": "전망"},
     {"word": "tumble", "mean": "폭락하다"},
     {"word": "widespread", "mean": "널리 퍼진, 유행하고 있는"},
-    {"word": "exclusively", "mean": "전적으로"}
-  ],
-  [
+    {"word": "exclusively", "mean": "전적으로"},
     {"word": "attention", "mean": "주의, 경청"},
-    {"word": "brief", "mean": "~에게 간단히 설명하다, 브리핑하다"},
-    {"word": "coherent", "mean": "조리 있는, 일관성 있는"},
-    {"word": "comment", "mean": "논평하다"},
-    {"word": "confine", "mean": "제한하다, ~에 한정시키다"},
-    {"word": "consensus", "mean": "여론, 일치된 의견"},
-    {"word": "constraint", "mean": "제한"},
-    {"word": "constructive", "mean": "건설적인"},
+  ],
+  // 27
+  [
     {"word": "convene", "mean": "모이다, 개최되다"},
     {"word": "convince", "mean": "확신시키다, 납득시키다"},
     {"word": "coordination", "mean": "조정"},
@@ -1423,6 +1470,7 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "get rid of", "mean": "제거하다"},
     {"word": "cure", "mean": "치료법, 의약"}
   ],
+// 28
   [
     {"word": "attendee", "mean": "참석자, 출석자"},
     {"word": "chronological", "mean": "시간 순의, 연대 순의"},
@@ -1475,6 +1523,7 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "happen", "mean": "(일이)발생하다, 생기다"},
     {"word": "association", "mean": "단체"}
   ],
+  //29
   [
     {"word": "appreciation", "mean": "감사"},
     {"word": "award", "mean": "상, (상 등을) 수여하다"},
@@ -1527,6 +1576,7 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "manage", "mean": "~을 경영하다"},
     {"word": "exceed", "mean": "~을 능가하다, 넘어서다"}
   ],
+  // 30
   [
     {"word": "consist", "mean": "이루어지다, 구성되다"},
     {"word": "construction", "mean": "건설, 건축"},
@@ -1578,14 +1628,8 @@ List<List<Map<String, String>>> jsonN1Words = //
     {"word": "expense", "mean": "지출, 비용"},
     {"word": "capital", "mean": "자금, 자금을 공급하다"},
     {"word": "produce", "mean": "창출하다, 야기하다"},
-    {"word": "discrepancy", "mean": "불일치"},
-    {"word": "debt", "mean": "책임; 부채, 채무"},
-    {"word": "responsible", "mean": "책임져야 할; ~하기 쉬운"},
-    {"word": "financial", "mean": "금전의, 재정적인"},
-    {"word": "cost", "mean": "지출, 경비"},
-    {"word": "lately", "mean": "최근에"},
-    {"word": "significantly", "mean": "크게, 상당히"}
   ],
+  // 31
   [
     {"word": "diagnosis", "mean": "진단"},
     {"word": "dose", "mean": "1회 복용량"},

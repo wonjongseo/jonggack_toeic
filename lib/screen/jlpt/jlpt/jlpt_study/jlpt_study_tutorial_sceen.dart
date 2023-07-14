@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/app_constant.dart';
 import 'package:jonggack_toeic/common/widget/dimentions.dart';
 import 'package:jonggack_toeic/common/widget/tutorial_text.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/jlpt_study/jlpt_study_sceen.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_study/jlpt_study_sceen.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../../../../common/widget/app_bar_progress_bar.dart';
@@ -653,25 +653,9 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
                 //
                 Wrap(
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Text(
-                        key: kangiKey,
-                        '食',
-                        style: Theme.of(context)
-                            .textTheme
-                            .displaySmall!
-                            .copyWith(
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
-                                decorationColor: Colors.grey,
-                                color: Colors.white,
-                                fontSize: 60),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
                     Text(
-                      'べる',
+                      'English',
+                      key: kangiKey,
                       style: Theme.of(context).textTheme.displaySmall?.copyWith(
                             fontSize: 60,
                             color: Colors.white,

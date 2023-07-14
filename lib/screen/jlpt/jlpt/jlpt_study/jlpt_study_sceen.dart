@@ -3,7 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/voca_card.dart';
 
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/jlpt_study/jlpt_study_controller_temp.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_study/jlpt_study_controller_temp.dart';
 
 import '../../../../common/admob/banner_ad/global_banner_admob.dart';
 import '../../../../common/common.dart';

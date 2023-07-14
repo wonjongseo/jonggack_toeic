@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/admob/controller/ad_controller.dart';
 import 'package:jonggack_toeic/common/common.dart';
 import 'package:jonggack_toeic/config/colors.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/controller/jlpt_step_controller.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/controller/jlpt_step_controller.dart';
 import 'package:jonggack_toeic/screen/my_voca/controller/my_voca_controller.dart';
 import 'package:jonggack_toeic/screen/setting/services/setting_controller.dart';
 import 'package:jonggack_toeic/model/Question.dart';

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/widget/book_card.dart';
 import 'package:jonggack_toeic/common/widget/heart_count.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/controller/jlpt_step_controller.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/common/calendar_step_sceen.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/controller/jlpt_step_controller.dart';
+import 'package:jonggack_toeic/screen/jlpt/common/calendar_step_sceen.dart';
 import 'package:jonggack_toeic/screen/user/controller/user_controller.dart';
 import 'package:jonggack_toeic/tts_controller.dart';
 
@@ -38,7 +38,7 @@ class BookStepScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('N$level급 단어'),
+        title: const Text('TOEIC 단어'),
         actions: const [HeartCount()],
       ),
       body: ListView.separated(

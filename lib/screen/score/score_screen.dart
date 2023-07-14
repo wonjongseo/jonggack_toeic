@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:jonggack_toeic/common/admob/banner_ad/global_banner_admob.dart';
 import 'package:jonggack_toeic/common/common.dart';
 import 'package:jonggack_toeic/config/colors.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/jlpt_test/controller/jlpt_test_controller.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_test/controller/jlpt_test_controller.dart';
 import 'package:get/get.dart';
 import 'package:jonggack_toeic/screen/score/components/wrong_word_card.dart';
 

@@ -88,7 +88,7 @@ class MyVocaTutorialService {
                           fontWeight: FontWeight.bold),
                       children: [
                         TextSpan(
-                            text: '일본어, 읽는법, 의미',
+                            text: '단어와 의미',
                             style: TextStyle(
                               color: Colors.red,
                               fontWeight: FontWeight.bold,
@@ -220,7 +220,7 @@ class MyVocaTutorialService {
                   '암기된 단어만 보기',
                   '미암기된 단어만 보기',
                   '모든 단어를 보기',
-                  '일본어와 읽는법을 뒤집어서 보기',
+                  '단어와 의미을 뒤집어서 보기',
                 ],
               ),
             ),

@@ -6,6 +6,7 @@ import 'package:jonggack_toeic/common/admob/controller/ad_controller.dart';
 import 'package:jonggack_toeic/config/colors.dart';
 import 'package:jonggack_toeic/config/theme.dart';
 import 'package:jonggack_toeic/screen/user/controller/user_controller.dart';
+import 'package:jonggack_toeic/tts_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../model/my_word.dart';
@@ -28,12 +29,6 @@ class MyVocaController extends GetxController {
             myWord.word,
             style: TextStyle(color: Colors.black, fontSize: 40),
           ),
-          // title: KangiText(
-          //   fontSize: 40,
-          //   color: AppColors.scaffoldBackground,
-          //   japanese: myWord.word,
-          //   clickTwice: false,
-          // ),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -67,13 +62,11 @@ class MyVocaController extends GetxController {
 
   MyWordRepository myWordReposotiry = MyWordRepository();
   UserController userController = Get.find<UserController>();
-
+  TtsController ttsController = Get.put(TtsController());
   late TextEditingController wordController;
-  late TextEditingController yomikataController;
   late TextEditingController meanController;
 
   late FocusNode wordFocusNode;
-  late FocusNode yomikataFocusNode;
   late FocusNode meanFocusNode;
 
   late MyVocaTutorialService? myVocaTutorialService = null;
@@ -119,7 +112,7 @@ class MyVocaController extends GetxController {
   }
 
   void showTutirial(BuildContext context) async {
-    MyWord tempWord = MyWord(word: '食べる', mean: '먹다');
+    MyWord tempWord = MyWord(word: 'English', mean: '먹다');
     tempWord.isKnown = true;
     DateTime now = DateTime.now();
 
@@ -147,20 +140,16 @@ class MyVocaController extends GetxController {
       adController = Get.find<AdController>();
     }
     wordController = TextEditingController();
-    yomikataController = TextEditingController();
     meanController = TextEditingController();
     wordFocusNode = FocusNode();
-    yomikataFocusNode = FocusNode();
     meanFocusNode = FocusNode();
   }
 
   @override
   void onClose() {
     wordController.dispose();
-    yomikataController.dispose();
     meanController.dispose();
     wordFocusNode.dispose();
-    yomikataFocusNode.dispose();
     meanFocusNode.dispose();
     super.onClose();
   }
@@ -168,15 +157,10 @@ class MyVocaController extends GetxController {
 // 직접 일본어 단어 저장
   void manualSaveMyWord() async {
     String word = wordController.text;
-    String yomikata = yomikataController.text;
     String mean = meanController.text;
 
     if (word.isEmpty) {
       wordFocusNode.requestFocus();
-      return;
-    }
-    if (yomikata.isEmpty) {
-      yomikataFocusNode.requestFocus();
       return;
     }
     if (mean.isEmpty) {
@@ -203,7 +187,6 @@ class MyVocaController extends GetxController {
 
     wordController.clear();
     meanController.clear();
-    yomikataController.clear();
     wordFocusNode.requestFocus();
     saveWordCount++;
 

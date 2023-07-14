@@ -6,8 +6,7 @@ import 'package:jonggack_toeic/screen/home/home_screen.dart';
 import 'package:jonggack_toeic/common/admob/banner_ad/test_banner_ad_controller.dart';
 import 'package:jonggack_toeic/config/theme.dart';
 import 'package:jonggack_toeic/model/user.dart';
-import 'package:jonggack_toeic/screen/grammar/repository/grammar_step_repository.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/repository/jlpt_step_repository.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/repository/jlpt_step_repository.dart';
 import 'package:jonggack_toeic/common/repository/local_repository.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -19,6 +18,7 @@ import 'common/widget/apple_store_icon.dart';
 import 'screen/setting/services/setting_controller.dart';
 
 // Farebase Ios bunndle's name = com.wonjongseo.toeic-jonggack
+// Hive - flutter pub run build_runner build --delete-conflicting-outputs
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
@@ -58,8 +58,6 @@ class _AppState extends State<App> {
 
   Future<bool> loadData() async {
     List<int> jlptWordScroes = [];
-    List<int> grammarScores = [];
-    List<int> kangiScores = [];
     try {
       await LocalReposotiry.init();
 
@@ -69,31 +67,15 @@ class _AppState extends State<App> {
         jlptWordScroes = [3220];
       }
 
-      if (await GrammarRepositroy.isExistData() == false) {
-        grammarScores.add(await GrammarRepositroy.init('1'));
-        grammarScores.add(await GrammarRepositroy.init('2'));
-        grammarScores.add(await GrammarRepositroy.init('3'));
-      } else {
-        grammarScores = [208, 111, 103];
-      }
-
       late User user;
       if (await UserRepository.isExistData() == false) {
         List<int> currentJlptWordScroes =
             List.generate(jlptWordScroes.length, (index) => 0);
-        List<int> currentGrammarScores =
-            List.generate(grammarScores.length, (index) => 0);
-        List<int> currentKangiScores =
-            List.generate(kangiScores.length, (index) => 0);
 
         user = User(
           heartCount: AppConstant.HERAT_COUNT_MAX,
           jlptWordScroes: jlptWordScroes,
-          grammarScores: grammarScores,
-          kangiScores: kangiScores,
           currentJlptWordScroes: currentJlptWordScroes,
-          currentGrammarScores: currentGrammarScores,
-          currentKangiScores: currentKangiScores,
         );
 
         user = await UserRepository.init(user);
@@ -164,7 +146,6 @@ class _AppState extends State<App> {
                   ElevatedButton(
                     onPressed: () async {
                       await LocalReposotiry.init();
-                      GrammarRepositroy.deleteAllGrammar();
                       JlptStepRepositroy.deleteAllWord();
                     },
                     child: const Text('초기화'),

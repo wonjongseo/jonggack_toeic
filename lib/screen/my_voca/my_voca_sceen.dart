@@ -11,9 +11,10 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../../common/admob/banner_ad/global_banner_admob.dart';
 import '../../common/admob/controller/ad_controller.dart';
+import '../../common/common.dart';
 import '../../common/excel.dart';
 import '../user/controller/user_controller.dart';
-import '../jlpt_and_kangi/jlpt/jlpt_test/jlpt_test_screen.dart';
+import '../jlpt/jlpt/jlpt_test/jlpt_test_screen.dart';
 import 'components/my_word_input_field.dart';
 import 'components/upload_excel_infomation.dart';
 
@@ -79,8 +80,6 @@ class MyVocaPage extends StatelessWidget {
                         saveWord: controller.manualSaveMyWord,
                         wordFocusNode: controller.wordFocusNode,
                         wordController: controller.wordController,
-                        yomikataFocusNode: controller.yomikataFocusNode,
-                        yomikataController: controller.yomikataController,
                         meanFocusNode: controller.meanFocusNode,
                         meanController: controller.meanController,
                       ),
@@ -267,7 +266,7 @@ class MyVocaPage extends StatelessWidget {
                                                       width: double.infinity,
                                                       height: 50,
                                                       child: ElevatedButton(
-                                                          onPressed: () {
+                                                          onPressed: () async {
                                                             List<MyWord>
                                                                 tempMyWord = [];
 
@@ -312,11 +311,22 @@ class MyVocaPage extends StatelessWidget {
                                                               });
                                                               return;
                                                             }
+                                                            Get.back();
+                                                            bool isSubjective =
+                                                                await askToWatchMovieAndGetHeart(
+                                                                    title: const Text(
+                                                                        '시험 유형을 선택해주세요.'),
+                                                                    contentStrings: [
+                                                                  '주관식',
+                                                                  '객관식'
+                                                                ]);
                                                             Get.toNamed(
                                                               JLPT_TEST_PATH,
                                                               arguments: {
                                                                 MY_VOCA_TEST:
-                                                                    tempMyWord
+                                                                    tempMyWord,
+                                                                'isSubjective':
+                                                                    isSubjective,
                                                               },
                                                             );
                                                           },

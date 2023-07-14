@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/widget/dimentions.dart';
 import 'package:jonggack_toeic/config/colors.dart';
 import 'package:jonggack_toeic/config/theme.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/jlpt_test/controller/jlpt_test_controller.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_test/controller/jlpt_test_controller.dart';
 import 'package:jonggack_toeic/model/Question.dart';
 
 import 'jlpt_test_option.dart';

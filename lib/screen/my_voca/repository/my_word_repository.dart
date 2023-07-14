@@ -41,8 +41,10 @@ class MyWordRepository {
   }
 
   void updateKnownMyVoca(String word, bool isTrue) {
+    print('word: ${word}');
     final list = Hive.box<MyWord>(MyWord.boxKey);
     MyWord myWord = list.get(word) as MyWord;
+    print('myWord: ${myWord}');
     myWord.isKnown = isTrue;
     list.put(word, myWord);
   }

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/admob/controller/ad_controller.dart';
 import 'package:jonggack_toeic/common/common.dart';
 import 'package:jonggack_toeic/config/colors.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/controller/jlpt_step_controller.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/controller/jlpt_step_controller.dart';
 import 'package:jonggack_toeic/screen/my_voca/controller/my_voca_controller.dart';
 import 'package:jonggack_toeic/screen/setting/services/setting_controller.dart';
 import 'package:jonggack_toeic/model/Question.dart';
@@ -48,9 +48,9 @@ class JlptTestController extends GetxController
   bool isSubjective = false;
 
   void init(dynamic arguments) {
-    if (arguments != null && arguments['relatedWord'] != null) {
-    } else if (arguments != null && arguments[MY_VOCA_TEST] != null) {
+    if (arguments != null && arguments[MY_VOCA_TEST] != null) {
       // 나만의 시험 초기화
+      isSubjective = arguments['isSubjective'];
       myVocaController = Get.find<MyVocaController>();
       startMyVocaQuiz(arguments[MY_VOCA_TEST]);
     } else if (arguments != null && arguments[JLPT_TEST] != null) {
@@ -157,10 +157,18 @@ class JlptTestController extends GetxController
     isMyWordTest = true;
     List<Word> tempWords = List.generate(
       myWords.length,
-      (i) => Word(
-        word: myWords[i].word,
-        mean: myWords[i].mean,
-      ),
+      (i) {
+        if (isSubjective) {
+          return Word(
+            word: myWords[i].mean,
+            mean: myWords[i].word,
+          );
+        }
+        return Word(
+          word: myWords[i].word,
+          mean: myWords[i].mean,
+        );
+      },
     );
 
     map = Question.generateQustion(tempWords, false);
@@ -275,7 +283,11 @@ class JlptTestController extends GetxController
 
   textWrong() {
     if (isMyWordTest) {
-      myVocaController!.updateWord(correctQuestion.word, false);
+      if (isSubjective) {
+        myVocaController!.updateWord(correctQuestion.mean, false);
+      } else {
+        myVocaController!.updateWord(correctQuestion.word, false);
+      }
     }
     saveWrongQuestion();
     isWrong = true;
@@ -293,7 +305,11 @@ class JlptTestController extends GetxController
     nextOrSkipText = 'next';
     if (isMyWordTest) {
       // 나만의 단어 알고 있음으로 변경.
-      myVocaController!.updateWord(correctQuestion.word, true);
+      if (isSubjective) {
+        myVocaController!.updateWord(correctQuestion.mean, true);
+      } else {
+        myVocaController!.updateWord(correctQuestion.word, true);
+      }
     }
     Future.delayed(const Duration(milliseconds: 800), () {
       nextQuestion();

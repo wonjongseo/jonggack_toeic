@@ -1,13 +1,9 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/widget/dimentions.dart';
 import 'package:jonggack_toeic/config/colors.dart';
 import 'package:jonggack_toeic/config/theme.dart';
-import 'package:jonggack_toeic/screen/home/services/home_controller.dart';
 import 'package:jonggack_toeic/screen/setting/setting_screen.dart';
-
-import '../../../how_to_use_screen.dart';
 
 class WelcomeWidget extends StatelessWidget {
   const WelcomeWidget({
@@ -39,7 +35,7 @@ class WelcomeWidget extends StatelessWidget {
           ),
           boxShadow: const [
             BoxShadow(
-              color: Color(0x0f0f0f0f),
+              color: Colors.black,
               blurRadius: 5,
               offset: Offset(0, 5),
             )
@@ -61,7 +57,7 @@ class WelcomeWidget extends StatelessWidget {
                       fontFamily: AppFonts.japaneseFont,
                     ),
               ),
-              SizedBox(height: Dimentions.height10 / 3),
+              SizedBox(height: Dimentions.height10),
               Row(
                 children: [
                   Text(

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:jonggack_toeic/model/jlpt_step.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/repository/jlpt_step_repository.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/repository/jlpt_step_repository.dart';
 
 import '../../../../common/admob/banner_ad/test_banner_ad_controller.dart';
 import '../../../../common/app_constant.dart';
@@ -43,11 +43,11 @@ class JlptStepController extends GetxController {
     if (isSeenTutorial) {
       Get.toNamed(JLPT_STUDY_PATH);
     } else {
-      isSeenTutorial = true;
-      Get.to(
-        () => const JlptStudyTutorialSceen(),
-        transition: Transition.circularReveal,
-      );
+      // isSeenTutorial = true;
+      // Get.to(
+      //   () => const JlptStudyTutorialSceen(),
+      //   transition: Transition.circularReveal,
+      // );
     }
   }
 

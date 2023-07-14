@@ -3,9 +3,6 @@ import 'dart:developer';
 import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:jonggack_toeic/model/Question.dart';
-import 'package:jonggack_toeic/model/example.dart';
-import 'package:jonggack_toeic/model/grammar.dart';
-import 'package:jonggack_toeic/model/grammar_step.dart';
 import 'package:jonggack_toeic/model/hive_type.dart';
 import 'package:jonggack_toeic/model/my_word.dart';
 import 'package:jonggack_toeic/model/jlpt_step.dart';
@@ -36,18 +33,6 @@ class LocalReposotiry {
       Hive.registerAdapter(JlptStepAdapter());
     }
 
-    if (!Hive.isAdapterRegistered(GrammarTypeId)) {
-      Hive.registerAdapter(GrammarAdapter());
-    }
-
-    if (!Hive.isAdapterRegistered(GrammarStepTypeId)) {
-      Hive.registerAdapter(GrammarStepAdapter());
-    }
-
-    if (!Hive.isAdapterRegistered(ExampleTypeId)) {
-      Hive.registerAdapter(ExampleAdapter());
-    }
-
     if (!Hive.isAdapterRegistered(QuestionTypeId)) {
       Hive.registerAdapter(QuestionAdapter());
     }
@@ -55,11 +40,6 @@ class LocalReposotiry {
     if (!Hive.isBoxOpen('homeTutorialKey')) {
       log("await Hive.openBox('homeTutorialKey')");
       await Hive.openBox('homeTutorialKey');
-    }
-
-    if (!Hive.isBoxOpen('grammarTutorialKey')) {
-      log("await Hive.openBox('grammarTutorialKey')");
-      await Hive.openBox('grammarTutorialKey');
     }
 
     if (!Hive.isBoxOpen('wordStudyTutorialKey')) {
@@ -118,21 +98,6 @@ class LocalReposotiry {
       await Hive.openBox(JlptStep.boxKey);
     }
 
-    if (!Hive.isBoxOpen(Example.boxKey)) {
-      log("await Hive.openBox(Example.boxKey)");
-      await Hive.openBox(Example.boxKey);
-    }
-
-    if (!Hive.isBoxOpen(Grammar.boxKey)) {
-      log("await Hive.openBox(Grammar.boxKey)");
-      await Hive.openBox(Grammar.boxKey);
-    }
-
-    if (!Hive.isBoxOpen(GrammarStep.boxKey)) {
-      log("await Hive.openBox(GrammarStep.boxKey)");
-      await Hive.openBox(GrammarStep.boxKey);
-    }
-
     if (!Hive.isBoxOpen(Word.boxKey)) {
       log("await Hive.openBox<Word>(Word.boxKey)");
       await Hive.openBox<Word>(Word.boxKey);
@@ -162,6 +127,7 @@ class LocalReposotiry {
   }
 
   static bool isSeenWordStudyTutorialTutorial() {
+    return false;
     final wordStudyTutorialBox = Hive.box('wordStudyTutorialKey');
     String key = 'wordStudyTutorialKey';
 
@@ -179,6 +145,8 @@ class LocalReposotiry {
   }
 
   static bool isSeenMyWordTutorial({bool isRestart = false}) {
+    return false;
+
     final myWordTutorialBox = Hive.box('myWordTutorialKey');
 
     String key = 'myWordTutorial';
@@ -189,28 +157,6 @@ class LocalReposotiry {
 
     if (myWordTutorialBox.get(key) == false) {
       myWordTutorialBox.put(key, true);
-      return false;
-    }
-
-    return true;
-  }
-
-  static bool isSeenGrammarTutorial({bool isRestart = false}) {
-    final grammarTutorialBox = Hive.box('grammarTutorialKey');
-
-    String key = 'grammarTutorial';
-    if (isRestart) {
-      grammarTutorialBox.put(key, false);
-      return false;
-    }
-
-    if (!grammarTutorialBox.containsKey(key)) {
-      grammarTutorialBox.put(key, true);
-      return false;
-    }
-
-    if (grammarTutorialBox.get(key) == false) {
-      grammarTutorialBox.put(key, true);
       return false;
     }
 
@@ -229,10 +175,6 @@ class LocalReposotiry {
     final myWordTutorialBox = Hive.box('myWordTutorialKey');
     String myWordTutorialBoxkey = 'myWordTutorial';
     await myWordTutorialBox.put(myWordTutorialBoxkey, false);
-
-    final grammarTutorialBox = Hive.box('grammarTutorialKey');
-    String grammarTutorialBoxkey = 'grammarTutorial';
-    await grammarTutorialBox.put(grammarTutorialBoxkey, false);
   }
 
   static bool autoSaveOnOff() {

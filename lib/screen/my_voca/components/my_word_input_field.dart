@@ -6,8 +6,6 @@ class MyWordInputField extends StatelessWidget {
     super.key,
     required this.wordFocusNode,
     required this.wordController,
-    required this.yomikataFocusNode,
-    required this.yomikataController,
     required this.meanFocusNode,
     required this.meanController,
     required this.saveWord,
@@ -16,8 +14,6 @@ class MyWordInputField extends StatelessWidget {
   final Function() saveWord;
   final FocusNode wordFocusNode;
   final TextEditingController wordController;
-  final FocusNode yomikataFocusNode;
-  final TextEditingController yomikataController;
   final FocusNode meanFocusNode;
   final TextEditingController meanController;
 
@@ -42,23 +38,6 @@ class MyWordInputField extends StatelessWidget {
             decoration: InputDecoration(
               label: Text(
                 '일본어',
-                style: TextStyle(
-                  fontSize: responsiveTextFieldFontSize,
-                  color: AppColors.scaffoldBackground,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: responsiveMargin),
-          TextFormField(
-            style: const TextStyle(color: AppColors.scaffoldBackground),
-            focusNode: yomikataFocusNode,
-            onFieldSubmitted: (value) => saveWord(),
-            controller: yomikataController,
-            decoration: InputDecoration(
-              label: Text(
-                '읽는 법',
                 style: TextStyle(
                   fontSize: responsiveTextFieldFontSize,
                   color: AppColors.scaffoldBackground,

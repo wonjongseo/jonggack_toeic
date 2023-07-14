@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:jonggack_toeic/common/widget/dimentions.dart';
 
@@ -14,7 +13,6 @@ class PartOfInformation extends StatelessWidget {
     this.currentProgressCount,
     this.totalProgressCount,
     this.goToSutdy,
-    this.homeTutorialService,
   });
   final String text;
   final EdgeInsets edgeInsets;
@@ -22,7 +20,6 @@ class PartOfInformation extends StatelessWidget {
   final int? currentProgressCount;
   final int? totalProgressCount;
   final Function()? goToSutdy;
-  final HomeTutorialService? homeTutorialService;
 
   @override
   Widget build(BuildContext context) {
@@ -31,38 +28,31 @@ class PartOfInformation extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          FadeInLeft(
-            from: homeTutorialService == null ? 100 : 0,
-            child: Text(
-              key: homeTutorialService?.selectKey,
-              text,
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    fontSize: Dimentions.width14,
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
+          Text(
+            text,
+            style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                  fontSize: Dimentions.width14,
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FadeInLeft(
-                from: homeTutorialService == null ? 100 : 0,
-                child: SizedBox(
-                  height: Dimentions.height45,
-                  width: Dimentions.width165,
-                  child: ElevatedButton(
-                    onPressed: goToSutdy,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.whiteGrey,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: Dimentions.width16),
-                    ),
-                    child: Text(
-                      '학습 하기',
-                      style: TextStyle(
-                        fontSize: Dimentions.height14,
-                        fontWeight: FontWeight.bold,
-                      ),
+              SizedBox(
+                height: Dimentions.height45,
+                width: Dimentions.width165,
+                child: ElevatedButton(
+                  onPressed: goToSutdy,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.whiteGrey,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: Dimentions.width16),
+                  ),
+                  child: Text(
+                    '학습 하기',
+                    style: TextStyle(
+                      fontSize: Dimentions.height14,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -117,7 +107,6 @@ class PartOfInformation extends StatelessWidget {
                     height: Dimentions.height60,
                     width: Dimentions.height60,
                     child: AnimatedCircularProgressIndicator(
-                      key: homeTutorialService?.progressKey,
                       currentProgressCount: currentProgressCount,
                       totalProgressCount: totalProgressCount,
                     ),

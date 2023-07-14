@@ -28,7 +28,7 @@ class Question {
   }
 
   static Map<int, List<Word>> generateAnswer(
-      List<Word> vocas, int currentIndex, bool isManual) {
+      List<Word> vocas, int currentIndex, bool isSubjective) {
     Random random = Random();
 
     List<int> answerIndex = List.empty(growable: true);
@@ -74,7 +74,7 @@ class Question {
       }
 
       Word newWord;
-      if (isManual) {
+      if (isSubjective) {
         newWord = Word(
           word: tempMean,
           mean: vocas[answerIndex[j]].word,
@@ -95,10 +95,11 @@ class Question {
   }
 
   static List<Map<int, List<Word>>> generateQustion(
-      List<Word> vocas, bool isManual) {
+      List<Word> vocas, bool isSubjective) {
     List<Map<int, List<Word>>> map = List.empty(growable: true);
     for (int correntIndex = 0; correntIndex < vocas.length; correntIndex++) {
-      Map<int, List<Word>> voca = generateAnswer(vocas, correntIndex, isManual);
+      Map<int, List<Word>> voca =
+          generateAnswer(vocas, correntIndex, isSubjective);
       map.add(voca);
     }
     map.shuffle();

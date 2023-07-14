@@ -7,9 +7,9 @@ import 'package:jonggack_toeic/common/widget/dimentions.dart';
 import 'package:jonggack_toeic/model/jlpt_step.dart';
 import 'package:jonggack_toeic/model/my_word.dart';
 import 'package:jonggack_toeic/screen/setting/services/setting_controller.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/jlpt_test/jlpt_test_screen.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/controller/jlpt_step_controller.dart';
-import 'package:jonggack_toeic/screen/jlpt_and_kangi/jlpt/jlpt_study/jlpt_study_sceen.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_test/jlpt_test_screen.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/controller/jlpt_step_controller.dart';
+import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_study/jlpt_study_sceen.dart';
 
 import '../../../../config/colors.dart';
 import '../../../../model/word.dart';
@@ -243,7 +243,9 @@ class JlptStudyControllerTemp extends GetxController {
     }
 
     currentIndex++;
-
+    if (settingController.isEnabledEnglishSound) {
+      ttsController.speak(words[currentIndex].word);
+    }
     // 단어 학습 중. (남아 있는 단어 존재)
     if (currentIndex < words.length) {
       pageController.nextPage(
@@ -307,9 +309,6 @@ class JlptStudyControllerTemp extends GetxController {
     }
     update();
 
-    if (settingController.isEnabledEnglishSound) {
-      ttsController.speak(words[correctCount].word);
-    }
     return;
   }
 

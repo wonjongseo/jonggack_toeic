@@ -1,7 +1,5 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jonggack_toeic/screen/grammar/grammar_step_screen.dart';
 import 'package:jonggack_toeic/screen/home/components/welcome_widget.dart';
 import 'package:jonggack_toeic/screen/home/services/home_controller.dart';
 import 'package:jonggack_toeic/screen/home/services/home_tutorial_service.dart';
@@ -34,10 +32,7 @@ class HomeScreen extends StatelessWidget {
 
   SafeArea _body(BuildContext context, HomeController homeController) {
     if (!homeController.isSeenTutorial) {
-      homeController.homeTutorialService = HomeTutorialService();
-      homeController.homeTutorialService?.initTutorial();
-      homeController.homeTutorialService?.showTutorial(context);
-      homeController.isSeenTutorial = true;
+      homeController.settingFunctions();
     }
 
     return SafeArea(
@@ -47,8 +42,6 @@ class HomeScreen extends StatelessWidget {
             flex: 2,
             child: WelcomeWidget(
                 isUserPremieum: homeController.userController.isUserPremieum(),
-                // welcomeKey: homeController.homeTutorialService?.welcomeKey,
-                settingKey: homeController.homeTutorialService?.settingKey,
                 scaffoldKey: homeController.scaffoldKey),
           ),
           Expanded(
@@ -75,20 +68,7 @@ class HomeScreen extends StatelessWidget {
                             totalProgressCount:
                                 userController.user.jlptWordScroes[index],
                             edgeInsets: edgeInsets,
-                            homeTutorialService:
-                                homeController.homeTutorialService,
                           ),
-                          if (index < 3)
-                            PartOfInformation(
-                              goToSutdy: () => Get.to(() => GrammarStepSceen(
-                                  level: (index + 1).toString())),
-                              text: 'JLPT 문법',
-                              currentProgressCount: userController
-                                  .user.currentGrammarScores[index],
-                              totalProgressCount:
-                                  userController.user.grammarScores[index],
-                              edgeInsets: edgeInsets,
-                            ),
                         ],
                       ),
                     );
@@ -104,35 +84,28 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    child: FadeInLeft(
-                      child: UserWordButton(
-                        textKey: homeController.homeTutorialService?.myVocaKey,
-                        text: '나만의 단어장',
-                        onTap: () {
-                          Get.toNamed(
-                            MY_VOCA_PATH,
-                            arguments: {MY_VOCA_TYPE: MyVocaEnum.MY_WORD},
-                          );
-                        },
-                      ),
+                    child: UserWordButton(
+                      text: '나만의 단어장',
+                      onTap: () {
+                        Get.toNamed(
+                          MY_VOCA_PATH,
+                          arguments: {MY_VOCA_TYPE: MyVocaEnum.MY_WORD},
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: 20),
                   Expanded(
-                    child: FadeInLeft(
-                      child: UserWordButton(
-                        textKey:
-                            homeController.homeTutorialService?.wrongWordKey,
-                        text: '자주 틀리는 단어',
-                        onTap: () {
-                          Get.toNamed(
-                            MY_VOCA_PATH,
-                            arguments: {
-                              MY_VOCA_TYPE: MyVocaEnum.WRONG_WORD,
-                            },
-                          );
-                        },
-                      ),
+                    child: UserWordButton(
+                      text: '자주 틀리는 단어',
+                      onTap: () {
+                        Get.toNamed(
+                          MY_VOCA_PATH,
+                          arguments: {
+                            MY_VOCA_TYPE: MyVocaEnum.WRONG_WORD,
+                          },
+                        );
+                      },
                     ),
                   ),
                 ],

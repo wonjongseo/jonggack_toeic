@@ -26,22 +26,22 @@ class UploadExcelInfomation extends StatelessWidget {
         ExcelInfoText(
           number: '2. ',
           text1: '첫번째 열',
-          text2: '일본어',
+          text2: '단어',
         ),
         ExcelInfoText(
           number: '3. ',
           text1: '두번째 열',
-          text2: '읽는 법',
+          text2: '의미',
         ),
-        ExcelInfoText(
-          number: '4. ',
-          text1: '세번째 열',
-          text2: '뜻',
-        ),
+        // ExcelInfoText(
+        //   number: '4. ',
+        //   text1: '세번째 열',
+        //   text2: '뜻',
+        // ),
         Text.rich(
           style: TextStyle(color: AppColors.scaffoldBackground),
           TextSpan(
-            text: '5. ',
+            text: '4. ',
             children: [
               TextSpan(text: '빈 행', style: TextStyle(color: Colors.red)),
               TextSpan(text: '이 '),

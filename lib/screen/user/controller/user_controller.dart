@@ -12,7 +12,9 @@ import '../../../config/colors.dart';
 
 // ignore: constant_identifier_names
 
-enum TotalProgressType { JLPT, GRAMMAR, KANGI }
+enum TotalProgressType {
+  JLPT,
+}
 
 enum SOUND_OPTIONS { VOLUMN, PITCH, RATE }
 
@@ -105,16 +107,6 @@ class UserController extends GetxController {
           user.currentJlptWordScroes[i] = 0;
         }
         break;
-      case TotalProgressType.GRAMMAR:
-        for (int i = 0; i < user.currentGrammarScores.length; i++) {
-          user.currentGrammarScores[i] = 0;
-        }
-        break;
-      case TotalProgressType.KANGI:
-        for (int i = 0; i < user.currentKangiScores.length; i++) {
-          user.currentKangiScores[i] = 0;
-        }
-        break;
     }
     userRepository.updateUser(user);
   }
@@ -129,28 +121,6 @@ class UserController extends GetxController {
             user.currentJlptWordScroes[index] = user.jlptWordScroes[index];
           } else {
             user.currentJlptWordScroes[index] += addScore;
-          }
-        }
-
-        break;
-      case TotalProgressType.GRAMMAR:
-        if (user.currentGrammarScores[index] + addScore >= 0) {
-          if (user.currentGrammarScores[index] + addScore >
-              user.grammarScores[index]) {
-            user.currentGrammarScores[index] = user.grammarScores[index];
-          } else {
-            user.currentGrammarScores[index] += addScore;
-          }
-        }
-
-        break;
-      case TotalProgressType.KANGI:
-        if (user.currentKangiScores[index] + addScore >= 0) {
-          if (user.currentKangiScores[index] + addScore >
-              user.kangiScores[index]) {
-            user.currentKangiScores[index] = user.kangiScores[index];
-          } else {
-            user.currentKangiScores[index] += addScore;
           }
         }
 

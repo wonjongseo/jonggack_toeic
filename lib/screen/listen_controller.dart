@@ -5,7 +5,7 @@ import 'package:jonggack_toeic/tts_controller.dart';
 
 import '../common/app_constant.dart';
 import '../model/word.dart';
-import 'jlpt_and_kangi/jlpt/controller/jlpt_step_controller.dart';
+import 'jlpt/jlpt/controller/jlpt_step_controller.dart';
 
 class ListenController extends GetxController {
   List<Word> words = [];

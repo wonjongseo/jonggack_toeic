@@ -8,8 +8,7 @@ import 'package:jonggack_toeic/screen/user/controller/user_controller.dart';
 
 import '../../../common/common.dart';
 import '../../../config/colors.dart';
-import '../../grammar/repository/grammar_step_repository.dart';
-import '../../jlpt_and_kangi/jlpt/repository/jlpt_step_repository.dart';
+import '../../jlpt/jlpt/repository/jlpt_step_repository.dart';
 import '../../../common/repository/local_repository.dart';
 import '../../my_voca/repository/my_word_repository.dart';
 
@@ -33,11 +32,7 @@ class SettingController extends GetxController {
   }
 
   void flipAutoSave() {
-    if (userController.isUserFake() || userController.isUserPremieum()) {
-      isAutoSave = toggleAutoSave();
-    } else {
-      userController.openPremiumDialog('자동 저장');
-    }
+    isAutoSave = toggleAutoSave();
   }
 
   Future<void> initJlptWord() async {
@@ -77,49 +72,6 @@ class SettingController extends GetxController {
         exit(0);
       }
     });
-  }
-
-  Future<void> initGrammar() async {
-    bool result = await askToWatchMovieAndGetHeart(
-        title: const Text(
-          'JLPT 문법을 초기화 하시겠습니까?',
-          style: TextStyle(
-              color: AppColors.scaffoldBackground, fontWeight: FontWeight.bold),
-        ),
-        content: const Text(
-          '점수들도 함께 사라집니다. 그래도 진행하시겠습니까?',
-          style: TextStyle(
-            color: AppColors.scaffoldBackground,
-          ),
-        ));
-
-    if (result) {
-      isInitial = true;
-      userController.initializeProgress(TotalProgressType.GRAMMAR);
-      GrammarRepositroy.deleteAllGrammar();
-      successDeleteAndQuitApp();
-    }
-  }
-
-  Future<void> initkangi() async {
-    bool result = await askToWatchMovieAndGetHeart(
-        title: const Text(
-          'JLPT 한자을 초기화 하시겠습니까?',
-          style: TextStyle(
-              color: AppColors.scaffoldBackground, fontWeight: FontWeight.bold),
-        ),
-        content: const Text(
-          '점수들도 함께 사라집니다. 그래도 진행하시겠습니까?',
-          style: TextStyle(
-            color: AppColors.scaffoldBackground,
-          ),
-        ));
-
-    if (result) {
-      isInitial = true;
-      userController.initializeProgress(TotalProgressType.KANGI);
-      successDeleteAndQuitApp();
-    }
   }
 
   Future<void> initMyWords() async {
