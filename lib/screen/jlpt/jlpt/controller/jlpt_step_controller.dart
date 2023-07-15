@@ -9,6 +9,7 @@ import '../../../user/controller/user_controller.dart';
 
 class JlptStepController extends GetxController {
   List<JlptStep> jlptSteps = [];
+  List<List<JlptStep>> allJlptSteps = [];
   final String level;
   late String headTitle;
   late int headTitleCount;
@@ -19,21 +20,12 @@ class JlptStepController extends GetxController {
 
   JlptStepController({required this.level}) {
     headTitleCount = jlptStepRepositroy.getCountByJlptHeadTitle(level);
-  }
 
-  bool restrictN1SubStep(int subStep) {
-    if (userController.user.isFake) {
-      return false;
+    for (int i = 0; i < headTitleCount; i++) {
+      String a = '챕터$i';
+
+      allJlptSteps.add(jlptStepRepositroy.getJlptStepByHeadTitle(level, a));
     }
-    // 무료버전일 경우.
-    if ((level == '1' &&
-        !userController.isUserPremieum() &&
-        subStep > AppConstant.RESTRICT_SUB_STEP_INDEX)) {
-      userController.openPremiumDialog('N1급 모든 단어 활성화',
-          messages: ['N1 단어의 다른 챕터에서 무료버전의 일부를 학습 할 수 있습니다.']);
-      return true;
-    }
-    return false;
   }
 
   void goToStudyPage(int subStep, bool isSeenTutorial) {
@@ -111,11 +103,29 @@ class JlptStepController extends GetxController {
     return jlptSteps[step];
   }
 
-  void setJlptSteps(String headTitle) {
-    this.headTitle = headTitle;
-    jlptSteps =
-        jlptStepRepositroy.getJlptStepByHeadTitle(level, this.headTitle);
+  void setJlptSteps(String chapter) {
+    // this.headTitle = headTitle;
+    jlptSteps = allJlptSteps[int.parse(chapter)];
+    // jlptSteps =
+    //     jlptStepRepositroy.getJlptStepByHeadTitle(level, this.headTitle);
 
-    update();
+    // update();
+  }
+
+  // ---------
+
+  bool restrictN1SubStep(int subStep) {
+    if (userController.user.isFake) {
+      return false;
+    }
+    // 무료버전일 경우.
+    if ((level == '1' &&
+        !userController.isUserPremieum() &&
+        subStep > AppConstant.RESTRICT_SUB_STEP_INDEX)) {
+      userController.openPremiumDialog('N1급 모든 단어 활성화',
+          messages: ['N1 단어의 다른 챕터에서 무료버전의 일부를 학습 할 수 있습니다.']);
+      return true;
+    }
+    return false;
   }
 }

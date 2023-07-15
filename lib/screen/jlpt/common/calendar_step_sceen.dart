@@ -10,7 +10,6 @@ import 'package:jonggack_toeic/screen/user/controller/user_controller.dart';
 
 import '../../../common/widget/heart_count.dart';
 import '../../../common/repository/local_repository.dart';
-import '../../listen_controller.dart';
 import '../../listen_page.dart';
 
 const String JLPT_CALENDAR_STEP_PATH = '/jlpt-calendar-step';
@@ -20,18 +19,14 @@ class CalendarStepSceen extends StatelessWidget {
   late JlptStepController jlptWordController;
   late String chapter;
   late bool isSeenTutorial;
-  late bool isJlpt;
   UserController userController = Get.find<UserController>();
 
   CalendarStepSceen({super.key}) {
-    isJlpt = Get.arguments['isJlpt'];
-    if (isJlpt) {
-      jlptWordController = Get.find<JlptStepController>();
+    jlptWordController = Get.find<JlptStepController>();
 
-      chapter = Get.arguments['chapter'];
-      jlptWordController.setJlptSteps(chapter);
-      isSeenTutorial = LocalReposotiry.isSeenWordStudyTutorialTutorial();
-    }
+    chapter = Get.arguments['chapter'];
+    jlptWordController.setJlptSteps(chapter);
+    isSeenTutorial = LocalReposotiry.isSeenWordStudyTutorialTutorial();
   }
 
   @override
@@ -39,7 +34,7 @@ class CalendarStepSceen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const GlobalBannerAdmob(),
       appBar: AppBar(
-        title: Text('TOEIC 단어 - $chapter'),
+        title: Text('TOEIC 단어 - ${int.parse(chapter) + 1}'),
         actions: const [HeartCount()],
       ),
       body: Column(
@@ -49,10 +44,10 @@ class CalendarStepSceen extends StatelessWidget {
             padding: const EdgeInsets.only(right: 8.0),
             child: OutlinedButton(
                 onPressed: () {
-                  Get.to(() => WordListenScreen(chapter: chapter));
+                  Get.to(() => WordListenScreen(chapter: '챕터$chapter'));
                 },
                 child: Text(
-                  'N${jlptWordController.level}급 - $chapter 자동 듣기',
+                  '챕터${int.parse(chapter) + 1} 자동 듣기',
                   style: const TextStyle(
                     color: AppColors.whiteGrey,
                   ),

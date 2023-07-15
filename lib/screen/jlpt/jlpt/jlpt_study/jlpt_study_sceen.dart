@@ -127,10 +127,11 @@ class JlptStudyScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
-                          onTap: () {
-                            Get.to(() =>
-                                ExapleWords(voca: controller.words[index]));
-                          },
+                          // TODO,
+                          // onTap: () {
+                          // Get.to(() =>
+                          //     ExapleWords(voca: controller.words[index]));
+                          // },
                           child: Text(
                             controller.words[index].word,
                             style: Theme.of(context)

@@ -31,65 +31,51 @@ class JlptStepRepositroy {
     for (int i = 0; i < words.length; i++) {
       totalCount += words[i].length;
     }
-    print('totalCount: ${totalCount}');
-
+    // 31
     box.put('$nLevel-step-count', words.length);
 
-    for (int hiraganaIndex = 0; hiraganaIndex < words.length; hiraganaIndex++) {
-      String hiragana = "$hiraganaIndex";
+    for (int dayIndex = 0; dayIndex < words.length; dayIndex++) {
+      String day = "$dayIndex";
 
-      int wordsLengthByHiragana = words[hiraganaIndex].length;
+      int wordsLengthByDay = words[dayIndex].length;
       int stepCount = 0;
 
-      words[hiraganaIndex].shuffle();
+      words[dayIndex].shuffle();
 
       for (int step = 0;
-          step < wordsLengthByHiragana;
+          step < wordsLengthByDay;
           step += AppConstant.MINIMUM_STEP_COUNT) {
         List<Word> currentWords = [];
 
-        if (step + AppConstant.MINIMUM_STEP_COUNT > wordsLengthByHiragana) {
-          currentWords = words[hiraganaIndex].sublist(step);
+        if (step + AppConstant.MINIMUM_STEP_COUNT > wordsLengthByDay) {
+          currentWords = words[dayIndex].sublist(step);
         } else {
-          currentWords = words[hiraganaIndex]
+          currentWords = words[dayIndex]
               .sublist(step, step + AppConstant.MINIMUM_STEP_COUNT);
         }
         currentWords.shuffle();
 
         JlptStep tempJlptStep = JlptStep(
-            headTitle: hiragana,
-            step: stepCount,
-            words: currentWords,
-            scores: 0);
+            headTitle: day, step: stepCount, words: currentWords, scores: 0);
 
-        String key = '$nLevel-$hiragana-$stepCount';
-        print('key: ${key}');
+        String key = '$nLevel-$day-$stepCount';
         await box.put(key, tempJlptStep);
         stepCount++;
       }
-      print('=====================');
-      print("$nLevel-$hiragana : $nLevel-$hiragana");
-      print('stepCount: ${stepCount}');
-      await box.put('$nLevel-$hiragana', stepCount);
+
+      await box.put('$nLevel-$day', stepCount);
     }
     return totalCount;
   }
 
   List<JlptStep> getJlptStepByHeadTitle(String nLevel, String headTitle) {
     final box = Hive.box(JlptStep.boxKey);
-    print(
-        "int.parse(headTitle.split('챕터')[1]) ${int.parse(headTitle.split('챕터')[1])}");
     int headTitleStepCount =
         box.get('1-${int.parse(headTitle.split('챕터')[1])}');
 
     List<JlptStep> jlptStepList = [];
-    print('headTitle: ${headTitle}');
-
-    print('nLevel: ${nLevel}');
-    print('headTitleStepCount: ${headTitleStepCount}');
     for (int step = 0; step < headTitleStepCount; step++) {
       String key = '1-${int.parse(headTitle.split('챕터')[1])}-$step';
-      // String key = '1-1-0';
       JlptStep jlptStep = box.get(key);
       jlptStepList.add(jlptStep);
     }

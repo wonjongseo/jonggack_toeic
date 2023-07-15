@@ -59,24 +59,22 @@ class HomeScreen extends StatelessWidget {
                             userController.user.jlptWordScroes[0],
                         edgeInsets: edgeInsets,
                       ),
-                      InkWell(
-                        child: PartOfInformation(
-                          goToSutdy: () =>
-                              homeController.goToJlptStudy((0 + 1).toString()),
-                          text: 'TOEIC 900 단어',
-                          currentProgressCount: 0,
-                          totalProgressCount: 1,
-                          edgeInsets: edgeInsets,
-                        ),
-                      ),
-                      PartOfInformation(
-                        goToSutdy: () =>
-                            homeController.goToJlptStudy((0 + 1).toString()),
-                        text: 'TOEIC 문법 단어',
-                        currentProgressCount: 0,
-                        totalProgressCount: 1,
-                        edgeInsets: edgeInsets,
-                      ),
+                      // PartOfInformation(
+                      //   goToSutdy: () =>
+                      //       homeController.goToJlptStudy((0 + 1).toString()),
+                      //   text: 'TOEIC 900 단어',
+                      //   currentProgressCount: 0,
+                      //   totalProgressCount: 1,
+                      //   edgeInsets: edgeInsets,
+                      // ),
+                      // PartOfInformation(
+                      //   goToSutdy: () =>
+                      //       homeController.goToJlptStudy((0 + 1).toString()),
+                      //   text: 'TOEIC 문법 단어',
+                      //   currentProgressCount: 0,
+                      //   totalProgressCount: 1,
+                      //   edgeInsets: edgeInsets,
+                      // ),
                     ],
                   ),
                 );
@@ -84,10 +82,10 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 3,
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
+              child: Row(
                 children: [
                   Expanded(
                     child: UserWordButton(
@@ -100,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(width: 20),
                   Expanded(
                     child: UserWordButton(
                       text: '자주 틀리는 단어',
@@ -118,7 +116,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const Spacer(flex: 1)
         ],
       ),
     );

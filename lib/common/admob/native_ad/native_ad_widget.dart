@@ -80,7 +80,7 @@ class NativeAdState extends State<NativeAdWidget> {
           case ConnectionState.none:
           case ConnectionState.waiting:
           case ConnectionState.active:
-            child = BookCard(level: '', onTap: () {});
+            child = BookCard(level: 1, isAllFinished: false, onTap: () {});
             break;
           case ConnectionState.done:
             if (snapshot.hasData) {

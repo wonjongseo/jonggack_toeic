@@ -145,7 +145,6 @@ class TtsController extends GetxController {
     print('initTts');
     flutterTts = FlutterTts();
     var getLanguages = await flutterTts.getLanguages;
-    print('getLanguages: ${getLanguages}');
     _setAwaitOptions();
 
     setAwaitOptions();

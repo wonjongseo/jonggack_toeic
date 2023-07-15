@@ -21,7 +21,7 @@ class ListenController extends GetxController {
     pageController = PageController();
     words = jlptWordController.jlptStepRepositroy
         .correctAllStepData(jlptWordController.level, chapter);
-    update();
+    // update();
   }
 
   UserController userController = Get.find<UserController>();

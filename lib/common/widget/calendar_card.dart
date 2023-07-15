@@ -44,8 +44,13 @@ class CalendarCard extends StatelessWidget {
                         style:
                             Theme.of(context).textTheme.displayMedium?.copyWith(
                                   fontSize: (width / 10),
+                                  // color: isAabled
+                                  //     ? Colors.white
+                                  //     : Colors.white.withOpacity(0.1),
                                   color: isAabled
-                                      ? Colors.white
+                                      ? jlptStep.scores == jlptStep.words.length
+                                          ? AppColors.lightGreen
+                                          : Colors.white
                                       : Colors.white.withOpacity(0.1),
                                 )),
                   ),
@@ -55,8 +60,13 @@ class CalendarCard extends StatelessWidget {
                       '${jlptStep.scores.toString()} / ${jlptStep.words.length}',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             fontSize: width / 35,
+                            // color: isAabled
+                            //     ? Colors.white
+                            //     : Colors.white.withOpacity(0.1),
                             color: isAabled
-                                ? Colors.white
+                                ? jlptStep.scores == jlptStep.words.length
+                                    ? AppColors.lightGreen
+                                    : Colors.white
                                 : Colors.white.withOpacity(0.1),
                           ),
                     ),

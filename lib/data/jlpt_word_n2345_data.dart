@@ -1,6 +1,5 @@
 List<List<Map<String, String>>> jsonN1Words = //
     [
-  [],
   //1
   [
     {"word": "noticeably", "mean": "눈에 잘 띄게, 두드러지게"},

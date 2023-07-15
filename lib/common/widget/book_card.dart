@@ -6,9 +6,11 @@ class BookCard extends StatelessWidget {
     Key? key,
     required this.level,
     required this.onTap,
+    required this.isAllFinished,
   }) : super(key: key);
 
-  final String level;
+  final bool isAllFinished;
+  final int level;
   final VoidCallback onTap;
 
   @override
@@ -22,21 +24,21 @@ class BookCard extends StatelessWidget {
           style: IconButton.styleFrom(
             padding: EdgeInsets.zero,
           ),
-          icon: const Icon(
+          icon: Icon(
             Icons.book,
-            color: Colors.white,
+            color: isAllFinished ? AppColors.lightGreen : Colors.white,
             size: 220,
           ),
         ),
         Text(
-          level,
-          style: const TextStyle(
-            color: AppColors.whiteGrey,
+          '챕터${level + 1}',
+          style: TextStyle(
+            color: isAllFinished ? AppColors.lightGreen : AppColors.whiteGrey,
             fontWeight: FontWeight.bold,
             fontSize: 25,
           ),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 20),
       ],
     );
   }

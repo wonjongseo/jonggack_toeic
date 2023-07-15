@@ -77,19 +77,17 @@ class HomeController extends GetxController {
     Get.to(
       () => BookStepScreen(
         level: index,
-        isJlpt: true,
-      ),
-      duration: const Duration(milliseconds: 300),
-    );
-  }
-
-  void goToKangiScreen(String level) {
-    Get.to(
-      () => BookStepScreen(
-        level: level,
-        isJlpt: false,
       ),
       duration: const Duration(milliseconds: 300),
     );
   }
 }
+
+/**
+ var a = [
+  [],
+  [{},{},],
+  []
+ ];
+
+ */
