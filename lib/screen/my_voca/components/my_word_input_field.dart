@@ -37,7 +37,7 @@ class MyWordInputField extends StatelessWidget {
             controller: wordController,
             decoration: InputDecoration(
               label: Text(
-                '일본어',
+                '영어',
                 style: TextStyle(
                   fontSize: responsiveTextFieldFontSize,
                   color: AppColors.scaffoldBackground,

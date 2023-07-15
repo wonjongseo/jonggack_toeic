@@ -43,7 +43,7 @@ class JlptTestTextFormField extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(15)),
             ),
             label: Text(
-              ' 읽는 법',
+              '스펠링',
               style: TextStyle(
                 color: AppColors.scaffoldBackground.withOpacity(0.5),
                 fontSize: 16,

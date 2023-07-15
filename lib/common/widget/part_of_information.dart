@@ -44,16 +44,7 @@ class PartOfInformation extends StatelessWidget {
                   height: Dimentions.height45,
                   width: Dimentions.width165,
                   child: ElevatedButton(
-                    onPressed: totalProgressCount == 1
-                        ? () {
-                            Get.dialog(const AlertDialog(
-                              content: Text(
-                                '준비 중 입니다.',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ));
-                          }
-                        : goToSutdy,
+                    onPressed: goToSutdy,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.whiteGrey,
                       padding:

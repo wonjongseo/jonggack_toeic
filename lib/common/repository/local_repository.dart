@@ -139,8 +139,6 @@ class LocalReposotiry {
   }
 
   static bool isSeenMyWordTutorial({bool isRestart = false}) {
-    return false;
-
     final myWordTutorialBox = Hive.box('myWordTutorialKey');
 
     String key = 'myWordTutorial';

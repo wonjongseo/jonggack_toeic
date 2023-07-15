@@ -34,8 +34,8 @@ class CalendarStepSceen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const GlobalBannerAdmob(),
       appBar: AppBar(
-        title: Text('TOEIC 단어 - ${int.parse(chapter) + 1}'),
-        actions: const [HeartCount()],
+        title: Text('TOEIC 단어 - 챕터${int.parse(chapter) + 1}'),
+        // actions: const [HeartCount()],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,7 +44,7 @@ class CalendarStepSceen extends StatelessWidget {
             padding: const EdgeInsets.only(right: 8.0),
             child: OutlinedButton(
                 onPressed: () {
-                  Get.to(() => WordListenScreen(chapter: '챕터$chapter'));
+                  Get.to(() => WordListenScreen(chapter: chapter));
                 },
                 child: Text(
                   '챕터${int.parse(chapter) + 1} 자동 듣기',

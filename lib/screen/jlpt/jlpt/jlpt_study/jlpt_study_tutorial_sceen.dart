@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/app_constant.dart';
@@ -8,6 +9,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import '../../../../common/widget/app_bar_progress_bar.dart';
 import '../../../../config/colors.dart';
+import 'components/jlpt_study_buttons_temp.dart';
 
 class JlptStudyTutorialSceen extends StatefulWidget {
   const JlptStudyTutorialSceen({super.key});
@@ -18,15 +20,12 @@ class JlptStudyTutorialSceen extends StatefulWidget {
 
 class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
   List<TargetFocus> targets = [];
-  GlobalKey meanKey = GlobalKey();
-  GlobalKey yomikataKey = GlobalKey();
-  GlobalKey unKnownKey = GlobalKey();
-  GlobalKey knownKey = GlobalKey();
-  GlobalKey kangiKey = GlobalKey();
-  GlobalKey heartKey = GlobalKey();
-  GlobalKey testKey = GlobalKey();
-  GlobalKey saveKey = GlobalKey();
-  GlobalKey soundKey = GlobalKey();
+  GlobalKey? meanKey = GlobalKey();
+  GlobalKey? unKnownKey = GlobalKey();
+  GlobalKey? knownKey = GlobalKey();
+  GlobalKey? kangiKey = GlobalKey();
+  GlobalKey? testKey = GlobalKey();
+  GlobalKey? saveKey = GlobalKey();
 
   @override
   void initState() {
@@ -47,9 +46,22 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
         if (target.identify == 'kangi') {}
       },
       onSkip: () {
+        meanKey = null;
+        unKnownKey = null;
+        knownKey = null;
+        kangiKey = null;
+        testKey = null;
+        saveKey = null;
+
         Get.offAndToNamed(JLPT_STUDY_PATH);
       },
       onFinish: () {
+        meanKey = null;
+        unKnownKey = null;
+        knownKey = null;
+        kangiKey = null;
+        testKey = null;
+        saveKey = null;
         Get.offAndToNamed(JLPT_STUDY_PATH);
       },
     ).show(context: context);
@@ -69,7 +81,7 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '한자 정보 보기',
+                      '발음 듣기',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -82,97 +94,15 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
                             color: Colors.white,
                             fontSize: 15.0),
                         children: [
+                          TextSpan(text: '화면을 클릭해서 '),
                           TextSpan(
-                              text: '한자',
+                              text: '발음',
                               style: TextStyle(
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17,
                               )),
-                          TextSpan(text: '를 클릭하여 '),
-                          TextSpan(
-                              text: '읽는 법, 음독, 훈독',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(
-                              text: '+ 연관 단어',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              )),
-                          TextSpan(text: '를 확인 할 수 있습니다.')
-                        ],
-                      ),
-                    ),
-                  ],
-                ))
-          ],
-        ),
-
-        // 읽는법
-        TargetFocus(
-          identify: "yomikata",
-          keyTarget: yomikataKey,
-          contents: [
-            TargetContent(
-                align: ContentAlign.top,
-                child: const Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '일본어 읽는 법 보기 / 듣기',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 22.0),
-                    ),
-                    Text.rich(
-                      TextSpan(
-                        text: '1. ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 15.0),
-                        children: [
-                          TextSpan(
-                              text: '읽는 법',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: ' 버튼을 눌러서 의미를 확인 할 수 있습니다.')
-                        ],
-                      ),
-                    ),
-                    Text.rich(
-                      TextSpan(
-                        text: '2. ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 15.0),
-                        children: [
-                          TextSpan(
-                              text: '소리',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: '도 함께 들을 수 있습니다.\n'),
-                          TextSpan(
-                            text: '(설정 페이지에서 자동으로 읽는 법 소리 ON/OFF 가능)',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: 13.0),
-                          )
+                          TextSpan(text: '을 들을 수 있습니다.'),
                         ],
                       ),
                     ),
@@ -231,55 +161,6 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
           ],
         ),
 
-        // 듣기
-        TargetFocus(
-          identify: "sound",
-          keyTarget: soundKey,
-          contents: [
-            TargetContent(
-                align: ContentAlign.bottom,
-                child: const Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '음성 듣기',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 22.0),
-                    ),
-                    Text.rich(
-                      TextSpan(
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 15.0),
-                        children: [
-                          TextSpan(
-                              text: '듣기',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: ' 버튼을 눌러서 해당 단어를 '),
-                          TextSpan(
-                              text: '다시',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: ' 들을 수 있습니다.')
-                        ],
-                      ),
-                    ),
-                  ],
-                ))
-          ],
-        ),
-
         // 알아요
         TargetFocus(
           identify: "known",
@@ -333,7 +214,7 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '일본어 의미 보기',
+                      '의미 보기',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -341,7 +222,6 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
                     ),
                     Text.rich(
                       TextSpan(
-                        text: '1. ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -358,117 +238,11 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
                         ],
                       ),
                     ),
-                    Text.rich(
-                      TextSpan(
-                        text: '2. ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 15.0),
-                        children: [
-                          TextSpan(
-                              text: '소리',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: '도 함께 들을 수 있습니다.\n'),
-                          TextSpan(
-                            text: '(설정 페이지에서 자동으로 의미 소리 ON/OFF 가능)',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: 13.0),
-                          )
-                        ],
-                      ),
-                    ),
                   ],
                 ))
           ],
         ),
 
-        TargetFocus(
-          identify: "heart",
-          keyTarget: heartKey,
-          contents: [
-            TargetContent(
-                align: ContentAlign.bottom,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      '하트',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 22.0),
-                    ),
-                    const Text.rich(
-                      TextSpan(
-                        text: '1. ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 15.0),
-                        children: [
-                          TextSpan(
-                              text: '한자의 설명',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: '을 보기 위해서는 '),
-                          TextSpan(
-                              text: '하트',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(
-                            text: '가 필요합니다.',
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: Dimentions.height10),
-                    const Text.rich(
-                      TextSpan(
-                        text: '2. ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 15.0),
-                        children: [
-                          TextSpan(
-                              text: '테스트',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: '를 통해 '),
-                          TextSpan(
-                              text: '하트',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(
-                            text: '를 채울 수 있습니다. ',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )),
-          ],
-        ),
         TargetFocus(
           identify: "test",
           keyTarget: testKey,
@@ -488,62 +262,28 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
                     ),
                     Text.rich(
                       TextSpan(
-                        text: "1. 시험보기 버튼을 클릭하면 ",
+                        text: "시험보기 버튼을 클릭하면 ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 15.0),
                         children: [
                           TextSpan(
-                              text: '읽는 법',
+                              text: '주관식',
                               style: TextStyle(
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17,
                               )),
-                          TextSpan(text: ' 과 '),
+                          TextSpan(text: ' 혹은 '),
                           TextSpan(
-                              text: '의미',
+                              text: '객관식',
                               style: TextStyle(
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17,
                               )),
-                          TextSpan(text: '로 테스트를 진행할 수 있습니다 ')
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text.rich(
-                      TextSpan(
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 15.0),
-                        children: [
-                          TextSpan(
-                              text: '2. 읽는 법',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: ' 은 주관식이며 '),
-                          TextSpan(
-                              text: '설정 페이지',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              )),
-                          TextSpan(text: ' 에서 OFF 할 수 있습니다.'),
-                          TextSpan(
-                            text: ' (장음은 입력하지 않아도 됨)',
-                            style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12.0),
-                          )
+                          TextSpan(text: '으로 테스트를 진행할 수 있습니다 ')
                         ],
                       ),
                     ),
@@ -558,8 +298,7 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
             TargetContent(
               align: ContentAlign.bottom,
               child: const TutorialText(
-                title: '[자주 틀리는 단어장] 에 단어 저장',
-              ),
+                  title: '[자주 틀리는 단어장]', subTitles: [' 에 단어가 저장됩니다.']),
             )
           ],
         ),
@@ -570,9 +309,8 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     double buttonWidth = threeWordButtonWidth;
-
+    double buttonHeight = 55;
     showTutorial();
     return Scaffold(
       appBar: AppBar(
@@ -583,25 +321,6 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
               color: Colors.white,
             ),
           ),
-          actions: [
-            Stack(
-              key: heartKey,
-              alignment: AlignmentDirectional.center,
-              children: const [
-                Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                  size: 40,
-                ),
-                Text(
-                  '30',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            )
-          ],
           title: AppBarProgressBar(
             size: size,
             currentValue: 40,
@@ -612,68 +331,139 @@ class _JlptStudyTutorialSceenState extends State<JlptStudyTutorialSceen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    key: saveKey,
-                    '저장',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.whiteGrey,
-                    ),
-                  ),
-                ),
-                OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    key: testKey,
-                    '시험',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.whiteGrey,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(flex: 1),
-            Column(
-              children: [
-                SizedBox(
-                    child: Text('たべる',
-                        style: TextStyle(
-                            fontSize: 23,
-                            fontWeight: FontWeight.w700,
-                            color: isShownYomikata
-                                ? Colors.white
-                                : Colors.transparent))),
-                //
-                Wrap(
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Stack(
                   children: [
-                    Text(
-                      'English',
-                      key: kangiKey,
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                            fontSize: 60,
-                            color: Colors.white,
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: Text(
+                          '저장',
+                          key: saveKey,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.whiteGrey,
                           ),
-                      textAlign: TextAlign.center,
-                    )
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: OutlinedButton(
+                        onPressed: () async {},
+                        child: Text(
+                          '시험',
+                          key: testKey,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.whiteGrey,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-                const SizedBox(height: 15),
-                SizedBox(
-                    child: Text('먹다',
-                        style: TextStyle(
-                            fontSize: 23,
-                            fontWeight: FontWeight.w700,
-                            color: isShownMean
-                                ? Colors.white
-                                : Colors.transparent))),
-              ],
+              ),
+            ),
+            Expanded(
+              flex: 7,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Wrap(
+                      children: [
+                        Text(
+                          'English',
+                          key: kangiKey,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall
+                              ?.copyWith(
+                                fontSize: 50,
+                                color: Colors.white,
+                              ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                        child: Text('영어',
+                            style: TextStyle(
+                                fontSize: 23,
+                                fontWeight: FontWeight.w700,
+                                color: isShownMean
+                                    ? Colors.white
+                                    : Colors.transparent))),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 4,
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: buttonWidth,
+                        height: buttonHeight,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            key: unKnownKey,
+                            '몰라요',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: Dimentions.width15,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: Dimentions.width10),
+                      SizedBox(
+                        width: buttonWidth,
+                        height: buttonHeight,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            key: meanKey,
+                            '의미',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: Dimentions.width15,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: Dimentions.width10),
+                      SizedBox(
+                        width: buttonWidth,
+                        height: buttonHeight,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            key: knownKey,
+                            '알아요',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: Dimentions.width15,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ),
             ),
             const Spacer(flex: 1),
           ],

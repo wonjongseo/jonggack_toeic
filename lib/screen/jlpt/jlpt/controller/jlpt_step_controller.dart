@@ -22,7 +22,7 @@ class JlptStepController extends GetxController {
     headTitleCount = jlptStepRepositroy.getCountByJlptHeadTitle(level);
 
     for (int i = 0; i < headTitleCount; i++) {
-      String a = '챕터$i';
+      String a = '$i';
 
       allJlptSteps.add(jlptStepRepositroy.getJlptStepByHeadTitle(level, a));
     }

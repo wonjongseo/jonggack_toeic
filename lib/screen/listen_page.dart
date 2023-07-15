@@ -22,7 +22,6 @@ class WordListenScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('chapter: ${chapter}');
     return WillPopScope(
       onWillPop: () async {
         await wordListenController.stop();
@@ -30,7 +29,7 @@ class WordListenScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('${chapter} 반복 듣기'),
+          title: Text('챕터${int.parse(chapter) + 1} 반복 듣기'),
         ),
         body: SafeArea(
           child: GetBuilder<ListenController>(builder: (tController) {

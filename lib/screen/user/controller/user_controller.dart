@@ -12,9 +12,7 @@ import '../../../config/colors.dart';
 
 // ignore: constant_identifier_names
 
-enum TotalProgressType {
-  JLPT,
-}
+enum TotalProgressType { JLPT }
 
 enum SOUND_OPTIONS { VOLUMN, PITCH, RATE }
 

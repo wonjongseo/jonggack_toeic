@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jonggack_toeic/config/colors.dart';
 import 'package:jonggack_toeic/screen/home/components/welcome_widget.dart';
 import 'package:jonggack_toeic/screen/home/services/home_controller.dart';
 import 'package:jonggack_toeic/screen/my_voca/my_voca_sceen.dart';
 import 'package:jonggack_toeic/screen/user/controller/user_controller.dart';
 import 'package:jonggack_toeic/screen/home/components/users_word_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../common/admob/banner_ad/global_banner_admob.dart';
 import '../../common/widget/part_of_information.dart';
@@ -32,11 +34,11 @@ class HomeScreen extends StatelessWidget {
     const edgeInsets = EdgeInsets.symmetric(horizontal: 20 * 0.7);
     return SafeArea(
       child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Expanded(
             flex: 2,
             child: WelcomeWidget(
-              isUserPremieum: homeController.userController.isUserPremieum(),
               scaffoldKey: homeController.scaffoldKey,
             ),
           ),
@@ -59,22 +61,6 @@ class HomeScreen extends StatelessWidget {
                             userController.user.jlptWordScroes[0],
                         edgeInsets: edgeInsets,
                       ),
-                      // PartOfInformation(
-                      //   goToSutdy: () =>
-                      //       homeController.goToJlptStudy((0 + 1).toString()),
-                      //   text: 'TOEIC 900 단어',
-                      //   currentProgressCount: 0,
-                      //   totalProgressCount: 1,
-                      //   edgeInsets: edgeInsets,
-                      // ),
-                      // PartOfInformation(
-                      //   goToSutdy: () =>
-                      //       homeController.goToJlptStudy((0 + 1).toString()),
-                      //   text: 'TOEIC 문법 단어',
-                      //   currentProgressCount: 0,
-                      //   totalProgressCount: 1,
-                      //   edgeInsets: edgeInsets,
-                      // ),
                     ],
                   ),
                 );
@@ -116,7 +102,39 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          const Spacer(flex: 1)
+          Expanded(
+            flex: 1,
+            child: TextButton(
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    '일본어 공부하러 가기',
+                    style: TextStyle(
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Icon(
+                    Icons.arrow_forward,
+                    color: AppColors.primaryColor,
+                  )
+                ],
+              ),
+              onPressed: () {
+                if (GetPlatform.isIOS) {
+                  launchUrl(
+                      Uri.parse('https://apps.apple.com/app/id6449939963'));
+                } else if (GetPlatform.isAndroid) {
+                  launchUrl(Uri.parse(
+                      'https://play.google.com/store/apps/details?id=com.wonjongseo.jlpt_jonggack'));
+                } else {
+                  launchUrl(Uri.parse(
+                      'https://play.google.com/store/apps/details?id=com.wonjongseo.jlpt_jonggack'));
+                }
+              },
+            ),
+          )
         ],
       ),
     );

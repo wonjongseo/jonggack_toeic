@@ -17,7 +17,7 @@ class User extends HiveObject {
   // N5 현재 진형량의 인덱스는 4
   List<int> currentJlptWordScroes = [];
 
-  //  bool isPremieum = true;
+  // bool isPremieum = true;
   bool isPremieum = false;
 
   User({

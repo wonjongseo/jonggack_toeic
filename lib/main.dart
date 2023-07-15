@@ -14,6 +14,7 @@ import 'package:jonggack_toeic/screen/user/controller/user_controller.dart';
 import 'package:jonggack_toeic/screen/user/repository/user_repository.dart';
 
 import 'common/app_constant.dart';
+import 'common/widget/apple_store_icon.dart';
 import 'screen/setting/services/setting_controller.dart';
 
 // Farebase Ios bunndle's name = com.wonjongseo.toeic-jonggack

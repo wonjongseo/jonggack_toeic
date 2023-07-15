@@ -9,13 +9,11 @@ class WelcomeWidget extends StatelessWidget {
   const WelcomeWidget({
     super.key,
     this.settingKey,
-    required this.isUserPremieum,
     required this.scaffoldKey,
   });
 
   final GlobalKey? settingKey;
   final GlobalKey? scaffoldKey;
-  final bool isUserPremieum;
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +49,7 @@ class WelcomeWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                       color: AppColors.scaffoldBackground,
                       fontWeight: FontWeight.w800,
-                      fontSize: isUserPremieum
-                          ? Dimentions.width20
-                          : Dimentions.width18,
+                      fontSize: Dimentions.width18,
                       fontFamily: AppFonts.japaneseFont,
                     ),
               ),
@@ -65,21 +61,17 @@ class WelcomeWidget extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                           color: AppColors.scaffoldBackground,
                           fontWeight: FontWeight.w800,
-                          fontSize: isUserPremieum
-                              ? Dimentions.width20
-                              : Dimentions.width18,
+                          fontSize: Dimentions.width18,
                           fontFamily: AppFonts.japaneseFont,
                         ),
                   ),
                   Text(
                     // key: welcomeKey,
-                    isUserPremieum ? 'TOEIC 종각 Plus' : 'TOEIC 종각',
+                    'TOEIC 종각',
                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
-                          fontSize: isUserPremieum
-                              ? Dimentions.width24
-                              : Dimentions.width20,
+                          fontSize: Dimentions.width20,
                           fontFamily: AppFonts.nanumGothic,
                         ),
                   ),

@@ -31,7 +31,9 @@ class _GlobalBannerAdmobState extends State<GlobalBannerAdmob> {
     _bannerAd = BannerAd(
       adUnitId: adUnitId.banner[GetPlatform.isIOS ? 'ios' : 'android']!,
       request: const AdRequest(),
-      size: AdSize.banner,
+      // size: AdSize.banner,
+      // size: AdSize.largeBanner,
+      size: AdSize.fullBanner,
       listener: BannerAdListener(
         onAdLoaded: (_) {
           setState(() {

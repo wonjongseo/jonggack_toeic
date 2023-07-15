@@ -22,9 +22,23 @@ class HomeController extends GetxController {
   Future settingFunctions() async {
     await Future.delayed(const Duration(milliseconds: 500));
 
+    bool isJapaneseSoundActive2 = await alertSetting(
+        title: '자동으로 모르는 단어를 저장하시겠습니까?',
+        content: '활성화 시 학습 페이지에서 [몰라요] 버튼을 누르면 자동적으로 [자주 틀리는 단어]에 저장됩니다.');
+
+    if (isJapaneseSoundActive2) {
+      if (!settingController.isAutoSave) {
+        settingController.flipAutoSave();
+      }
+    } else {
+      if (settingController.isAutoSave) {
+        settingController.flipAutoSave();
+      }
+    }
+
     bool isJapaneseSoundActive = await alertSetting(
         title: '자동으로 발음 (영어) 음성 듣기 활성화 하시겠습니까?',
-        content: '활성화 시 학습 페이지에서 [발음] 버튼을 누르면 자동적으로 영어 발음이 재생 됩니다.');
+        content: '활성화 시 학습 페이지에서 자동적으로 영어 발음이 재생 됩니다.');
 
     if (isJapaneseSoundActive) {
       if (!settingController.isEnabledEnglishSound) {

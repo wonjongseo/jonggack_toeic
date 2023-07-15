@@ -35,7 +35,7 @@ class AppleStoreIcon extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w800,
-                          fontSize: 40,
+                          fontSize: 35,
                         ),
                       ),
                     )

@@ -70,12 +70,11 @@ class JlptStepRepositroy {
 
   List<JlptStep> getJlptStepByHeadTitle(String nLevel, String headTitle) {
     final box = Hive.box(JlptStep.boxKey);
-    int headTitleStepCount =
-        box.get('1-${int.parse(headTitle.split('챕터')[1])}');
+    int headTitleStepCount = box.get('1-${int.parse(headTitle)}');
 
     List<JlptStep> jlptStepList = [];
     for (int step = 0; step < headTitleStepCount; step++) {
-      String key = '1-${int.parse(headTitle.split('챕터')[1])}-$step';
+      String key = '1-${int.parse(headTitle)}-$step';
       JlptStep jlptStep = box.get(key);
       jlptStepList.add(jlptStep);
     }

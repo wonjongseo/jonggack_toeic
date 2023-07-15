@@ -36,9 +36,8 @@ class _ScoreScreenState extends State<ScoreScreen> {
 
       int randomNumber = randDom.nextInt(20) + 20; // is >=20 and40
       // TODO
-      if (qnController.userController.clickUnKnownButtonCount > 3) {
-        //  if (qnController.userController.clickUnKnownButtonCount > randomNumber) {
-
+      // if (qnController.userController.clickUnKnownButtonCount > 3) {
+      if (qnController.userController.clickUnKnownButtonCount > randomNumber) {
         bool result = await askToWatchMovieAndGetHeart(
           title: const Text('저장한 단어를 복습하러 가요!'),
           content: const Text(

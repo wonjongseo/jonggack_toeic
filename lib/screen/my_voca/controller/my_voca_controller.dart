@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/admob/controller/ad_controller.dart';
 import 'package:jonggack_toeic/config/colors.dart';
 import 'package:jonggack_toeic/config/theme.dart';
+import 'package:jonggack_toeic/screen/my_voca/my_voca_sceen.dart';
 import 'package:jonggack_toeic/screen/user/controller/user_controller.dart';
 import 'package:jonggack_toeic/tts_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -190,11 +191,9 @@ class MyVocaController extends GetxController {
     wordFocusNode.requestFocus();
     saveWordCount++;
 
-    if (!userController.isUserPremieum()) {
-      if (saveWordCount > 7) {
-        adController!.showIntersistialAd();
-        saveWordCount = 0;
-      }
+    if (saveWordCount > 7) {
+      adController!.showIntersistialAd();
+      saveWordCount = 0;
     }
 
     update();

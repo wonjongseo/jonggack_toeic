@@ -20,7 +20,7 @@ class JlptTestOption extends StatelessWidget {
       builder: (qnController) {
         String getString() {
           if (qnController.textEditingController != null) {
-            if (!qnController.isSubmittedYomikata) {
+            if (!qnController.isSubmittedSpelling) {
               return '???';
             }
           }

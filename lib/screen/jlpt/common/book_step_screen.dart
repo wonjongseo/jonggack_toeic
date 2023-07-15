@@ -40,7 +40,7 @@ class BookStepScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('TOEIC 단어'),
-        actions: const [HeartCount()],
+        // actions: const [HeartCount()],
       ),
       body: GetBuilder<JlptStepController>(builder: (context) {
         return ListView.separated(
@@ -62,7 +62,7 @@ class BookStepScreen extends StatelessWidget {
               }
             }
 
-            String chapter = '챕터$index';
+            String chapter = '$index';
 
             return FadeInLeft(
               delay: Duration(milliseconds: 200 * index),

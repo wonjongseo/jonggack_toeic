@@ -194,11 +194,11 @@ class JlptTestController extends GetxController
     }
   }
 
-  bool isSubmittedYomikata = false;
+  bool isSubmittedSpelling = false;
   void onFieldSubmitted(String value) {
     if (value.isEmpty) return;
     inputValue = value;
-    isSubmittedYomikata = true;
+    isSubmittedSpelling = true;
   }
 
   void setQuestions() {
@@ -249,7 +249,7 @@ class JlptTestController extends GetxController
   // 사지선다 눌렀을 경우.
   void checkAns(Question question, int selectedIndex) {
     if (isSubjective) {
-      if (!isSubmittedYomikata) return;
+      if (!isSubmittedSpelling) return;
     }
 
     isDisTouchable = true;
@@ -260,11 +260,11 @@ class JlptTestController extends GetxController
 
     correctQuestion = question.options[correctAns];
 
-    if (isSubjective) {
-      if (settingController.isEnabledEnglishSound) {
-        ttsController.speak(correctQuestion.mean);
-      }
+    // if (isSubjective) {
+    if (settingController.isEnabledEnglishSound) {
+      ttsController.speak(correctQuestion.word);
     }
+    // }
 
     animationController.stop();
     update();
@@ -288,11 +288,7 @@ class JlptTestController extends GetxController
 
   textWrong() {
     if (isMyWordTest) {
-      if (isSubjective) {
-        myVocaController!.updateWord(correctQuestion.mean, false);
-      } else {
-        myVocaController!.updateWord(correctQuestion.word, false);
-      }
+      myVocaController!.updateWord(correctQuestion.word, false);
     }
     saveWrongQuestion();
     isWrong = true;
@@ -310,11 +306,7 @@ class JlptTestController extends GetxController
     nextOrSkipText = 'next';
     if (isMyWordTest) {
       // 나만의 단어 알고 있음으로 변경.
-      if (isSubjective) {
-        myVocaController!.updateWord(correctQuestion.mean, true);
-      } else {
-        myVocaController!.updateWord(correctQuestion.word, true);
-      }
+      myVocaController!.updateWord(correctQuestion.word, true);
     }
     Future.delayed(const Duration(milliseconds: 800), () {
       nextQuestion();
@@ -353,7 +345,7 @@ class JlptTestController extends GetxController
   }
 
   void nextQuestion() {
-    isSubmittedYomikata = false;
+    isSubmittedSpelling = false;
     isDisTouchable = false;
 
     if (questionNumber.value != questions.length) {

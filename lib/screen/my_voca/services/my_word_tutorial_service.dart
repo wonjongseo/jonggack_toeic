@@ -4,11 +4,11 @@ import 'package:jonggack_toeic/common/widget/tutorial_text.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 class MyVocaTutorialService {
-  GlobalKey inputIconKey = GlobalKey(debugLabel: 'inputIconKey');
-  GlobalKey calendarTextKey = GlobalKey(debugLabel: 'calendarTextKey');
-  GlobalKey myVocaTouchKey = GlobalKey(debugLabel: 'myVocaTouchKey');
-  GlobalKey flipKey = GlobalKey(debugLabel: 'flipKey');
-  GlobalKey excelMyVocaKey = GlobalKey(debugLabel: 'flipKey');
+  GlobalKey? inputIconKey = GlobalKey(debugLabel: 'inputIconKey');
+  GlobalKey? calendarTextKey = GlobalKey(debugLabel: 'calendarTextKey');
+  GlobalKey? myVocaTouchKey = GlobalKey(debugLabel: 'myVocaTouchKey');
+  GlobalKey? flipKey = GlobalKey(debugLabel: 'flipKey');
+  GlobalKey? excelMyVocaKey = GlobalKey(debugLabel: 'flipKey');
 
   List<TargetFocus> targets = [];
 
@@ -280,8 +280,20 @@ class MyVocaTutorialService {
 
   void showTutorial(BuildContext context, Function() onFlish) {
     TutorialCoachMark(
-      onFinish: onFlish,
+      onFinish: () {
+        inputIconKey = null;
+        calendarTextKey = null;
+        myVocaTouchKey = null;
+        flipKey = null;
+        excelMyVocaKey = null;
+        onFlish();
+      },
       onSkip: () {
+        inputIconKey = null;
+        calendarTextKey = null;
+        myVocaTouchKey = null;
+        flipKey = null;
+        excelMyVocaKey = null;
         onFlish();
       },
       alignSkip: Alignment.topLeft,

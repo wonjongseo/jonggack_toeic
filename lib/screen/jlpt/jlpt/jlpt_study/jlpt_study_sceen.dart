@@ -164,9 +164,7 @@ class JlptStudyScreen extends StatelessWidget {
 
   AppBar _appBar(Size size, double currentValue) {
     return AppBar(
-      actions: const [
-        HeartCount(),
-      ],
+      // actions: const [HeartCount()],
       leading: IconButton(
         onPressed: () async {
           wordController.jlptStep.unKnownWord = [];

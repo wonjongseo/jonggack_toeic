@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jonggack_toeic/common/common.dart';
@@ -54,13 +55,13 @@ class SettingScreen extends StatelessWidget {
                     onChanged: (value) => settingController.flipAutoSave(),
                     text: '모름 / 틀림 단어 자동 저장',
                   ),
-                  const Divider(),
                   SettingSwitch(
                     isOn: settingController.isEnabledEnglishSound,
                     onChanged: (value) =>
                         settingController.flipEnabledJapaneseSound(),
                     text: '자동으로 발음 (영어) 음성 듣기',
                   ),
+                  const Divider(height: 30),
                   GetBuilder<UserController>(builder: (controller) {
                     return Column(
                       children: [
@@ -136,23 +137,6 @@ class SettingScreen extends StatelessWidget {
   AppBar _appBar(SettingController settingController) {
     return AppBar(
       title: const Text('설정'),
-      actions: [
-        InkWell(
-          onLongPress: () async {
-            settingController.userController.user.isFake =
-                !settingController.userController.user.isFake;
-            await askToWatchMovieAndGetHeart(
-                title: const Text('모드 변경'),
-                content: Text(
-                  settingController.userController.user.isFake == true
-                      ? 'Fake으로 변경 되었습니다.'
-                      : 'UnFake으로 변경 되었습니다.',
-                  style: const TextStyle(color: AppColors.scaffoldBackground),
-                ));
-          },
-          child: SizedBox(width: 30, height: 30),
-        ),
-      ],
     );
   }
 }
