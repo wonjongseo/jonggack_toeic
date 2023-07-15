@@ -6,8 +6,10 @@ import 'dimentions.dart';
 class ExitTestButton extends StatelessWidget {
   const ExitTestButton({
     super.key,
+    required this.isMyTest,
   });
 
+  final bool isMyTest;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,7 +23,12 @@ class ExitTestButton extends StatelessWidget {
             fontSize: Dimentions.width16,
           ),
         ),
-        onPressed: () => getBacks(3),
+        onPressed: () {
+          if (isMyTest) {
+            return getBacks(2);
+          }
+          return getBacks(3);
+        },
       ),
     );
   }

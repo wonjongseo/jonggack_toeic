@@ -70,6 +70,7 @@ class JlptTestController extends GetxController
   }
 
   bool isTestAgain = false;
+
   void initAd() {
     if (!userController.user.isPremieum) {
       bannerAdController = Get.find<TestBannerAdController>();
@@ -158,12 +159,12 @@ class JlptTestController extends GetxController
     List<Word> tempWords = List.generate(
       myWords.length,
       (i) {
-        if (isSubjective) {
-          return Word(
-            word: myWords[i].mean,
-            mean: myWords[i].word,
-          );
-        }
+        // if (isSubjective) {
+        //   return Word(
+        //     word: myWords[i].mean,
+        //     mean: myWords[i].word,
+        //   );
+        // }
         return Word(
           word: myWords[i].word,
           mean: myWords[i].mean,
@@ -225,7 +226,11 @@ class JlptTestController extends GetxController
 
   Color getTheTextEditerBorderRightColor({bool isBorder = true}) {
     if (isAnswered) {
-      if (formattingQuestion(correctQuestion.mean, inputValue!)) {
+      if (isSubjective) {
+        if (formattingQuestion(correctQuestion.word, inputValue!)) {
+          return const Color(0xFF6AC259);
+        }
+      } else if (formattingQuestion(correctQuestion.mean, inputValue!)) {
         return const Color(0xFF6AC259);
       } else {
         return const Color(0xFFE92E30);
@@ -267,7 +272,7 @@ class JlptTestController extends GetxController
     // if 설정에서 읽는법도 테스트에 포함
 
     if (isSubjective) {
-      if (formattingQuestion(correctQuestion.mean, inputValue!)) {
+      if (formattingQuestion(correctQuestion.word, inputValue!)) {
         testCorect();
       } else {
         textWrong();

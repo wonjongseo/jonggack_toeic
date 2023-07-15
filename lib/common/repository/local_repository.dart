@@ -57,11 +57,6 @@ class LocalReposotiry {
       await Hive.openBox('autoSaveKey');
     }
 
-    if (!Hive.isBoxOpen('textKeyBoardKey')) {
-      log("await Hive.openBox('textKeyBoardKey')");
-      await Hive.openBox('textKeyBoardKey');
-    }
-
     if (!Hive.isBoxOpen('userJlptLevelKey')) {
       log("await Hive.openBox('userJlptLevelKey')");
       await Hive.openBox('userJlptLevelKey');
@@ -127,7 +122,6 @@ class LocalReposotiry {
   }
 
   static bool isSeenWordStudyTutorialTutorial() {
-    return false;
     final wordStudyTutorialBox = Hive.box('wordStudyTutorialKey');
     String key = 'wordStudyTutorialKey';
 

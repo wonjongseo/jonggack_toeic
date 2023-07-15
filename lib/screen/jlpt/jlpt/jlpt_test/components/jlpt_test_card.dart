@@ -17,7 +17,9 @@ class JlptTestCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String qustionWord = question.question.word;
+    String qustionWord = controller.isSubjective
+        ? question.question.mean
+        : question.question.word;
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: Dimentions.width20),
@@ -48,10 +50,10 @@ class JlptTestCard extends StatelessWidget {
                   const SizedBox(height: 10),
                   if (qnController.isWrong)
                     Text(
-                      '정답: ${qnController.correctQuestion.mean}',
-                      style: TextStyle(color: Color(0xFFE92E30), fontSize: 16),
+                      '정답: ${qnController.correctQuestion.word}',
+                      style: const TextStyle(
+                          color: Color(0xFFE92E30), fontSize: 16),
                     )
-                  // if(qnController.isWrong)
                 ],
               );
             })

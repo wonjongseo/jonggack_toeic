@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:jonggack_toeic/common/word_api_datasource.dart';
 import 'package:jonggack_toeic/tts_controller.dart';
 
@@ -48,18 +46,22 @@ class _WordExampleMeanCardState extends State<WordExampleMeanCard> {
                                 onTap: isAA
                                     ? null
                                     : () async {
-                                        setState(() {
-                                          isAA = true;
-                                        });
+                                        setState(
+                                          () {
+                                            isAA = true;
+                                          },
+                                        );
 
                                         String papagoedDifinition = await widget
                                             .wordApiDatasource
                                             .getWordDefinition(
-                                                widget.exampleList[index]);
+                                          widget.exampleList[index],
+                                        );
 
                                         setState(() {
                                           isAA = false;
                                         });
+
                                         Get.dialog(AlertDialog(
                                           title: Text(
                                             widget.exampleList[index],
@@ -83,12 +85,12 @@ class _WordExampleMeanCardState extends State<WordExampleMeanCard> {
                                 onTap: isAA
                                     ? null
                                     : () async {
-                                        // String tmp =
                                         setState(() {
                                           isAA = true;
                                         });
                                         await Future.delayed(
-                                            Duration(seconds: 70));
+                                          const Duration(seconds: 70),
+                                        );
                                         String papagoedDifinition = await widget
                                             .wordApiDatasource
                                             .getWordDefinition(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jonggack_toeic/common/widget/dimentions.dart';
 
 import '../../config/colors.dart';
-import '../../screen/home/services/home_tutorial_service.dart';
+import 'package:get/get.dart';
 import 'animated_circular_progressIndicator.dart';
 
 class PartOfInformation extends StatelessWidget {
@@ -42,7 +42,16 @@ class PartOfInformation extends StatelessWidget {
                 height: Dimentions.height45,
                 width: Dimentions.width165,
                 child: ElevatedButton(
-                  onPressed: goToSutdy,
+                  onPressed: totalProgressCount == 1
+                      ? () {
+                          Get.dialog(const AlertDialog(
+                            content: Text(
+                              '준비 중 입니다.',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ));
+                        }
+                      : goToSutdy,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.whiteGrey,
                     padding:

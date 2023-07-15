@@ -2,11 +2,9 @@ import 'package:get/get.dart';
 import 'package:jonggack_toeic/model/jlpt_step.dart';
 import 'package:jonggack_toeic/screen/jlpt/jlpt/repository/jlpt_step_repository.dart';
 
-import '../../../../common/admob/banner_ad/test_banner_ad_controller.dart';
 import '../../../../common/app_constant.dart';
 import '../../../../model/Question.dart';
 import '../jlpt_study/jlpt_study_sceen.dart';
-import '../jlpt_study/jlpt_study_tutorial_sceen.dart';
 import '../../../user/controller/user_controller.dart';
 
 class JlptStepController extends GetxController {

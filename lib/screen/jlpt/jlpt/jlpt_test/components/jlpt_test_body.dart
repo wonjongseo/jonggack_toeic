@@ -4,8 +4,6 @@ import 'package:get/instance_manager.dart';
 import 'package:jonggack_toeic/common/widget/dimentions.dart';
 import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_test/controller/jlpt_test_controller.dart';
 import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_test/components/jlpt_test_card.dart';
-import 'package:jonggack_toeic/screen/setting/components/setting_switch.dart';
-import 'package:jonggack_toeic/screen/setting/services/setting_controller.dart';
 
 class JlptTestBody extends StatelessWidget {
   const JlptTestBody({Key? key}) : super(key: key);

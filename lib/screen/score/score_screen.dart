@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:jonggack_toeic/common/admob/banner_ad/global_banner_admob.dart';
 import 'package:jonggack_toeic/common/common.dart';
 import 'package:jonggack_toeic/config/colors.dart';
+import 'package:jonggack_toeic/screen/home/home_screen.dart';
 import 'package:jonggack_toeic/screen/jlpt/jlpt/jlpt_test/controller/jlpt_test_controller.dart';
 import 'package:get/get.dart';
 import 'package:jonggack_toeic/screen/score/components/wrong_word_card.dart';
@@ -26,13 +27,18 @@ class _ScoreScreenState extends State<ScoreScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     JlptTestController qnController = Get.find<JlptTestController>();
-
-    Future.delayed(const Duration(milliseconds: 1000), () async {
+    Future.delayed(const Duration(milliseconds: 500), () async {
+      // 자주 틀리는 문제 -> 시험 경로로 들어갔을 때 메세지를 출력할 필요가 없음
+      if (qnController.isMyWordTest) {
+        return;
+      }
       Random randDom = Random();
 
       int randomNumber = randDom.nextInt(20) + 20; // is >=20 and40
+      // TODO
+      if (qnController.userController.clickUnKnownButtonCount > 3) {
+        //  if (qnController.userController.clickUnKnownButtonCount > randomNumber) {
 
-      if (qnController.userController.clickUnKnownButtonCount > randomNumber) {
         bool result = await askToWatchMovieAndGetHeart(
           title: const Text('저장한 단어를 복습하러 가요!'),
           content: const Text(
@@ -42,7 +48,9 @@ class _ScoreScreenState extends State<ScoreScreen> {
         );
         if (result) {
           qnController.userController.clickUnKnownButtonCount = 0;
-          qnController.isMyWordTest ? getBacks(2) : getBacks(3);
+
+          Get.offAllNamed(HOME_PATH);
+
           Get.toNamed(
             MY_VOCA_PATH,
             arguments: {
@@ -92,7 +100,9 @@ class _ScoreScreenState extends State<ScoreScreen> {
                         );
                       }),
                     const SizedBox(height: 20),
-                    const ExitTestButton(),
+                    ExitTestButton(
+                      isMyTest: qnController.isMyWordTest,
+                    ),
                     const SizedBox(height: 20),
                   ],
                 ),

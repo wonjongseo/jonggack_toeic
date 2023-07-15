@@ -74,19 +74,19 @@ class Question {
       }
 
       Word newWord;
-      if (isSubjective) {
-        newWord = Word(
-          word: tempMean,
-          mean: vocas[answerIndex[j]].word,
-          // mean: vocas[answerIndex[j]].mean,
-        );
-      } else {
-        newWord = Word(
-          word: vocas[answerIndex[j]].word,
-          mean: tempMean,
-          // mean: vocas[answerIndex[j]].mean,
-        );
-      }
+      // if (isSubjective) {
+      //   newWord = Word(
+      //     word: tempMean,
+      //     mean: vocas[answerIndex[j]].word,
+      //     // mean: vocas[answerIndex[j]].mean,
+      //   );
+      // } else {
+      newWord = Word(
+        word: vocas[answerIndex[j]].word,
+        mean: tempMean,
+        // mean: vocas[answerIndex[j]].mean,
+      );
+      // }
 
       answerVoca.add(newWord);
     }

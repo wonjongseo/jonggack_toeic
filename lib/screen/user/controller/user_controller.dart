@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jonggack_toeic/app_function_description.dart';
 import 'package:jonggack_toeic/common/repository/local_repository.dart';
 import 'package:jonggack_toeic/common/widget/dimentions.dart';
 import 'package:jonggack_toeic/model/user.dart';
 import 'package:jonggack_toeic/screen/user/repository/user_repository.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../app_function_description.dart';
 import '../../../common/app_constant.dart';
 import '../../../config/colors.dart';
 

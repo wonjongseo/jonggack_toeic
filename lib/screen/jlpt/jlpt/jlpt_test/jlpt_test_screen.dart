@@ -41,7 +41,7 @@ class JlptTestScreen extends StatelessWidget {
         ),
         onPressed: () async {
           if (questionController.isMyWordTest) {
-            getBacks(2);
+            getBacks(1);
             return;
           }
           bool result = await reallyQuitText();
