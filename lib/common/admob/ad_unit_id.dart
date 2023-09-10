@@ -21,33 +21,33 @@ class AdUnitId {
       };
 
       banner = {
-        'ios': 'ca-app-pub-9712392194582442~1255126638', // ok
-        'android': 'ca-app-pub-9712392194582442/7058112149'
+        'ios': 'ca-app-pub-9712392194582442/7390162283', // ok
+        'android': 'ca-app-pub-9712392194582442/6805129924' // ok
       };
       interstitial = {
-        'ios': 'ca-app-pub-9712392194582442~1255126638', // ok
-        'android': 'ca-app-pub-9712392194582442/1593160337'
+        'ios': 'ca-app-pub-9712392194582442/4630199200', // ok
+        'android': 'ca-app-pub-9712392194582442/4081342787' // ok
       };
       interstitialVideo = {
-        'ios': 'ca-app-pub-9712392194582442~1255126638', // ok
-        'android': 'ca-app-pub-9712392194582442/1593160337'
+        'ios': 'ca-app-pub-9712392194582442/4630199200', // ok
+        'android': 'ca-app-pub-9712392194582442/4081342787' // ok
       };
       rewarded = {
-        'ios': 'ca-app-pub-9712392194582442~1255126638', // ok
-        'android': 'ca-app-pub-9712392194582442/2875324550'
+        'ios': 'ca-app-pub-9712392194582442/9334950720', // ok
+        'android': 'ca-app-pub-9712392194582442/1744374930' // ok
       };
 
       rewardedInterstitial = {
-        'ios': 'ca-app-pub-9712392194582442~1255126638', // ok
-        'android': 'ca-app-pub-9712392194582442/5374044122'
+        'ios': 'ca-app-pub-9712392194582442/8217310179', // ok
+        'android': 'ca-app-pub-9712392194582442/3666409811' // ok
       };
       nativeAdvanced = {
-        'ios': 'ca-app-pub-9712392194582442~1255126638', // ok
-        'android': 'ca-app-pub-9712392194582442/8519082211'
+        'ios': 'ca-app-pub-9712392194582442/1456460702', //ok
+        'android': 'ca-app-pub-9712392194582442/4569531593' // ok
       };
       nativeAdvancedVideo = {
-        'ios': 'ca-app-pub-9712392194582442~1255126638', // ok
-        'android': 'ca-app-pub-9712392194582442/8519082211'
+        'ios': 'ca-app-pub-9712392194582442/1456460702', //ok
+        'android': 'ca-app-pub-9712392194582442/4569531593' // ok
       };
       // 전면
     } else {

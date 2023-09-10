@@ -545,15 +545,26 @@ class MyVocaPage extends StatelessWidget {
         ],
       ),
     );
+
     if (result != null) {
-      int savedWordNumber = await postExcelData();
-      adController!.showIntersistialAd();
-      if (savedWordNumber != 0) {
-        Get.offNamed(
-          MY_VOCA_PATH,
-          arguments: {MY_VOCA_TYPE: MyVocaEnum.MY_WORD},
-          preventDuplicates: false,
-        );
+      bool result2 = await askToWatchMovieAndGetHeart(
+        title: const Text('엑셀 단어 등록하기'),
+        content: const Text(
+          '광고를 시청하고 엑셀의 단어를 TOEIC종각에 저장하시겠습니까?',
+          style: TextStyle(color: AppColors.scaffoldBackground),
+        ),
+      );
+
+      if (result2) {
+        int savedWordNumber = await postExcelData();
+        if (savedWordNumber != 0) {
+          Get.offNamed(
+            MY_VOCA_PATH,
+            arguments: {MY_VOCA_TYPE: MyVocaEnum.MY_WORD},
+            preventDuplicates: false,
+          );
+          adController!.showRewardedInterstitialAd();
+        }
       }
     }
   }

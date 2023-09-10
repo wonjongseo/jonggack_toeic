@@ -260,12 +260,6 @@ class JlptTestController extends GetxController
 
     correctQuestion = question.options[correctAns];
 
-    // if (isSubjective) {
-    if (settingController.isEnabledEnglishSound) {
-      ttsController.speak(correctQuestion.word);
-    }
-    // }
-
     animationController.stop();
     update();
 
@@ -370,7 +364,7 @@ class JlptTestController extends GetxController
       // AD
 
       if (adController.randomlyPassAd() || !isTestAgain) {
-        adController.showRewardedInterstitialAd();
+        adController.showIntersistialAd();
       }
 
       if (!isMyWordTest) {

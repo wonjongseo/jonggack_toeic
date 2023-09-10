@@ -14,7 +14,6 @@ import 'package:jonggack_toeic/screen/user/controller/user_controller.dart';
 import 'package:jonggack_toeic/screen/user/repository/user_repository.dart';
 
 import 'common/app_constant.dart';
-import 'common/widget/apple_store_icon.dart';
 import 'screen/setting/services/setting_controller.dart';
 
 // Farebase Ios bunndle's name = com.wonjongseo.toeic-jonggack
@@ -45,7 +44,7 @@ class _AppState extends State<App> {
             theme: AppThemings.dartTheme,
             initialRoute: HOME_PATH,
             getPages: AppRoutes.getPages,
-            // home: AppleStoreIcon(),
+            // home: GraphicImage(),
           );
         } else if (snapshat.hasError) {
           return errorMaterialApp(snapshat);
@@ -64,7 +63,7 @@ class _AppState extends State<App> {
       if (await JlptStepRepositroy.isExistData() == false) {
         jlptWordScroes.add(await JlptStepRepositroy.init('1'));
       } else {
-        jlptWordScroes = [3220];
+        jlptWordScroes = [1578];
       }
 
       late User user;

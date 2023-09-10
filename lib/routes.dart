@@ -19,6 +19,8 @@ class AppRoutes {
     GetPage(
       name: MY_VOCA_PATH,
       page: () => MyVocaPage(),
+      transition: Transition.fadeIn,
+      curve: Curves.easeInOut,
     ),
     GetPage(
       name: JLPT_CALENDAR_STEP_PATH,
